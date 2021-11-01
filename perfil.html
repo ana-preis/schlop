@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="style_sistema.css">
+
+</head>
+<body>
+
+  <div class="header">
+    <a>
+      <img class="logo" src="imagens/vetorizado_logo(3).png">
+    </a>
+    <button class="sair verde" onclick="Sair()">Sair</button>
+  </div>
+
+  <div class="nav">
+    <button class="btn-nav btn-perfil" onclick="location.href='perfil.html'">Perfil</button>
+    <button class="btn-nav btn-pets">Pets</button>
+  </div>
+
+  <div class="container">
+
+    <h1>Perfil</h1>
+
+    <div class="content">
+
+      <label>Nome: </label>
+      <label id="nomePerfil"></label><br>
+
+      <label>Usuário: </label>
+      <label id="usuarioPerfil"></label><br>
+
+      <label>Email: </label>
+      <label id="emailPerfil"></label><br>
+
+      <label>Data Nascimento: </label>
+      <label id="dataNascimentoPerfil"></label><br>
+
+      <label>Dispositivo conectado: </label>
+      <label id="dispositivoPerfil"></label><br>
+
+      <label>Pets: </label>
+      <link id="petsPerfil"></link><br>
+
+    </div>
+
+    <div class="btn-last">
+      <button class="verde" onclick="Voltar()">Voltar</button>
+      <button class="btn-editar" onclick="location.href = 'editarPerfil.html'">Editar</button>
+      <button onclick="">Editar Pets</button>
+    </div>
+
+  </div>
+
+</body>
+<script src="script.js"></script>
+<script>
+  Perfil()
+</script>
+
+
+ </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Senha</title>
+  <link rel="stylesheet" href="style_sistema.css">
+
+
+</head>
+<body>
+
+  <div class="header">
+    <a>
+      <img class="logo" src="imagens/vetorizado_logo(3).png">
+    </a>
+    <button class="sair verde" onclick="Sair()">Sair</button>
+  </div>
+
+  <div class="nav">
+    <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+    <button class="btn-nav">Pets</button>
+  </div>
+
+  <div class="container">
+
+    <h1>Editar Senha</h1>
+
+    <div class="content">
+
+      <label>Senha Atual: </label>
+      <input id="senhaAtualEditar"></input><br>
+
+      <label>Nova Senha: </label>
+      <input id="senhaNovaEditar"></input><br>
+
+      <label>Repita a Nova Senha: </label>
+      <input id="confirmacaoSenhaEditar"></input><br>
+
+    </div>
+
+    <div class="btn-last">
+      <button onclick="location.href='editarPerfil.html'">Voltar</button>
+      <button class="btn-editar" onclick="AtualizaSenha()">Salvar</button><br>
+    </div>
+
+
+
+  </div>
+
+</body>
+<script src="script.js"></script>
+
+
+ </html>
