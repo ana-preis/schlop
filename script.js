@@ -50,7 +50,7 @@ function CadastroRapido() {
 function Perfil() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
-  usuarioAtual = usuarios[0]     //TEMPORARIO
+  usuarioAtual = usuarios[3]     //TEMPORARIO
 
   document.getElementById("nomePerfil").innerHTML = usuarioAtual.nome
   document.getElementById("usuarioPerfil").innerHTML = usuarioAtual.nomeDeUsuario
@@ -105,7 +105,7 @@ function SalvarPerfil() {
 // Verificação se o usuário preencheu todos os inputs ao apertar "Salvar",  retorna true se estiver VAZIO
 function VerificaInputEditarVazio() {
 
-  if (nomeEditar.value == "" || emailEditar.value == "" || dataNascimentoEditar.value == "") {
+  if (nomeEditar.value == "" || emailEditar.value == "" || dataNascimentoEditar.value == "" || usuarioEditar.value == "") {
     alert("Você deixou algum campo vazio!")
     return true
   } else { return false }
@@ -113,6 +113,7 @@ function VerificaInputEditarVazio() {
 }
 
 
+//Verifica se o nome de usuário já foi cadastrado no armazenamento local
 function NomeDeUsuarioJaExiste(usuarioAtual) {
 
   for (i = 0; i < usuarios.length; i++) {
@@ -129,6 +130,7 @@ function NomeDeUsuarioJaExiste(usuarioAtual) {
 
 }
 
+//Verifica se email tem "@" e se tem ".com"
 function ValidaEmail(email) {
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     return (true)
@@ -151,6 +153,7 @@ function AtualizaPerfil(usuarioAtual) {
 }
 
 
+//Deleta a conta do usuário que está logado e retorna para a Home page
 function DeletaConta() {
 
   if(confirm("Tem certeza que deseja deletar sua conta?")) {
@@ -169,7 +172,7 @@ function DeletaConta() {
 function AtualizaSenha(usuarioAtual) {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
-  usuarioAtual = usuarios[0]     //TEMPORARIO
+  usuarioAtual = usuarios[2]     //TEMPORARIO
   if (InputSenhaVazio() || !SenhaAtualCorreta(usuarioAtual) || !SenhaEConfirmacaoIguais()) { return }
   usuarioAtual.senha = senhaNovaEditar.value
   localStorage.setItem("usuarios", JSON.stringify(usuarios))
@@ -205,7 +208,7 @@ function SenhaEConfirmacaoIguais() {
 // Verifica se a senha digitada é igual à senha do Objeto usuarioAtual
 function SenhaAtualCorreta(usuarioAtual) {
 
-  if (senhaAtualEditar.value !== usuarioAtual.senha) {
+  if (senhaAtualEditar.value != usuarioAtual.senha) {
     alert("A senha digitada não corresponde a sua senha atual!")
     return false
   }
