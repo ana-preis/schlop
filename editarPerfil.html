@@ -20,7 +20,7 @@
 
   <div class="nav">
     <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-    <button class="btn-nav" onclick="Pets()">Pets</button>
+    <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
   </div>
 
   <div class="container">
@@ -29,30 +29,30 @@
 
     <div class="content">
 
-      <label>Nome: </label>
-      <input id="nomeEditar"></input><br>
+      <div class="form-content">
+        <label>Nome: </label>
+        <input id="nomeEditar"></input><br>
+  
+        <label>Usuário: </label>
+        <input id="usuarioEditar"></input><br>
+  
+        <label>Email: </label>
+        <input id="emailEditar"></input><br>
+  
+        <label>Data Nascimento: </label>
+        <input class="date-input" type="date" id="dataNascimentoEditar"></input><br>
+      </div>
 
-      <label>Usuário: </label>
-      <input id="usuarioEditar"></input><br>
-
-      <label>Email: </label>
-      <input id="emailEditar"></input><br>
-
-      <label>Data Nascimento: </label>
-      <input type="date" id="dataNascimentoEditar"></input><br>
-
-      <button onclick="EditarDispositivo()">Editar Dispositivos</button><br>
-
-      <button onclick="EditarPets()">Editar Pets</button><br>
-      <button onclick="EditarSenha()">Editar Senha</button><br>
+      <button class="btn-content" onclick="EditarDispositivo()">Editar Dispositivos</button><br>
+      <button class="btn-content" onclick="EditarPets()">Editar Pets</button><br>
+      <button class="btn-content" onclick="window.location.href='editarSenha.html'">Editar Senha</button><br>
+      <button class="btn-content" onclick="DeletaConta()">Excluir conta</button>
 
     </div>
 
     <div class="btn-last">
       <button onclick="location.href='perfil.html'">Voltar</button>
       <button class="btn-editar" onclick="SalvarPerfil()">Salvar</button>
-      <button onclick="DeletaConta()">Excluir conta</button>
-      <button onclick="CadastroRapido()">cadastro rapido</button>
     </div>
 
 
@@ -60,6 +60,7 @@
 
 </body>
 <script src="script.js"></script>
+
 
 
  </html>

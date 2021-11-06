@@ -18,8 +18,8 @@
   </div>
 
   <div class="nav">
-    <button class="btn-nav btn-perfil" onclick="location.href='perfil.html'">Perfil</button>
-    <button class="btn-nav btn-pets">Pets</button>
+    <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
+    <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
   </div>
 
   <div class="container">
@@ -28,30 +28,32 @@
 
     <div class="content">
 
-      <label>Nome: </label>
-      <label id="nomePerfil"></label><br>
+      <div class="form-content">
+        <label>Nome: </label>
+        <label id="nomePerfil"></label><br>
+  
+        <label>Usuário: </label>
+        <label id="usuarioPerfil"></label><br>
+  
+        <label>Email: </label>
+        <label id="emailPerfil"></label><br>
+  
+        <label>Data Nascimento: </label>
+        <label id="dataNascimentoPerfil"></label><br>
+  
+        <label>Dispositivo conectado: </label>
+        <label id="dispositivoPerfil"></label><br>
+  
+        <label>Pets: </label>
+        <link id="petsPerfil"></link><br>
+      </div>
 
-      <label>Usuário: </label>
-      <label id="usuarioPerfil"></label><br>
-
-      <label>Email: </label>
-      <label id="emailPerfil"></label><br>
-
-      <label>Data Nascimento: </label>
-      <label id="dataNascimentoPerfil"></label><br>
-
-      <label>Dispositivo conectado: </label>
-      <label id="dispositivoPerfil"></label><br>
-
-      <label>Pets: </label>
-      <link id="petsPerfil"></link><br>
-
+      <button class="btn-content" onclick="">Editar Pets</button>
     </div>
 
     <div class="btn-last">
-      <button class="verde" onclick="location.href = 'poslogin.html'">Voltar</button>
+      <button onclick="location.href = 'poslogin.html'">Voltar</button>
       <button class="btn-editar" onclick="location.href = 'editarPerfil.html'">Editar</button>
-      <button onclick="">Editar Pets</button>
     </div>
 
   </div>

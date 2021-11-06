@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Montserrat&family=Zen+Maru+Gothic&display=swap');
 
+
 body { 
   width: 100%;
-  height:100%;
+  height: 100%;
   font-family: 'Montserrat', sans-serif;  
   background:#fff ;
   overflow-x: hidden;
@@ -22,20 +23,21 @@ input {
 }
 
 .header {
-  height: 150px;
+  height: 120px;
 }
 
 .logo {
   position: relative;
-  width: 300px;
+  width: 20%;
+  min-width: 200px;
 }
 
 .sair {
   font-size: 18px;
-  position: absolute;
-  left: 85%;
-  width: 100px;
+  float: right;
+  width: 10%;
   height: 30px;
+  margin: 10px 30px;
   border: none;
 }
 
@@ -52,16 +54,17 @@ input {
 
 .nav {
   text-align: center;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: #8807F8;
   right: 50%;
-  width: 1005px;
+  width: 80%;
 }
 
 .btn-nav {
+  float: left;
   margin: 0;
   padding: 0;
-  width: 500px;
+  width: 50%;
   height: 50px;
   border: none;
   background-color: #8807F8;
@@ -69,7 +72,7 @@ input {
   font-size: 25px;
 }
 
-.btn-perfil {
+.btn-atual {
   background-color: #7004cf;
 }
 
@@ -78,12 +81,65 @@ button:hover {
 }
 
 .container {
-  margin: 0 auto;
-  right: 50%;
-  width: 1000px;
+  margin: 80px auto;
+  width: 80%;
+  background-color: #d4f0e9;
 }
 
-.container button  {
+h1 {
+  margin-top: 50px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.content {
+  margin: 50px 50px;
+}
+
+.content .form-content {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.content label {
+  display:inline-block;
+  margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+.content input{
+  padding: 5px 10px;
+  width: 50%;
+  font-size: 18px;
+}
+
+input.date-input {
+  width: 20%;
+}
+
+input.senha-input {
+  width: 30%;
+}
+
+button.btn-content {
+  background: none;
+  color: #8807F8;
+  padding: 5px 10px;
+  font-size: 16px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+button.btn-content:hover {
+  cursor: pointer;
+  background-color: #c787f8;
+}
+
+.btn-last button {
+  margin: 0 50px 50px 50px;
+  padding: 10px 30px;
   height: 40px;
   background-color: #8807F8;
   color: #fff;
@@ -92,58 +148,21 @@ button:hover {
   border: none;
 }
 
-.container button:hover {
-  cursor: pointer;
-  background-color: #c787f8;
-}
-
-h1 {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.content {
-  margin: 50px 50px;
-}
-
-.content label {
-  display:inline-block;
-  margin-bottom: 20px;
-  margin-right: 10px;
-  font-size: 18px;
-}
-
-.content input {
-  font-size: 18px;
-  padding: 5px 10px;
-  width: 300px;
-}
-
-.content button {
-  margin: 50px 0 0  0;
-  width: 200px;
-}
-
-.btn-last {
-  margin-top: 100px;
-
-}
-
-.btn-last button{
-  margin: 0 50px 100px 50px;
-  padding: 10px 30px;
-}
-
 .btn-editar {
-  position: relative;
-  left: 60%;
+  margin: 0 auto;
+  padding: 15px 30px;
+  float: right;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
-  float: left;
-  margin: 0px 40px 30px 0;
-  width: 25%;
-  height: 50%;
+  width: 23%;
+  margin: 1%;
+  box-sizing: border-box;
   background-color: #8807F8;
   color: #fff;
   text-align: center;
@@ -153,5 +172,54 @@ h1 {
 
 .card:hover {
   background-color: #c787f8;
+}
+
+.pesquisarPet {
+  margin: 0 20px 20px 20px;
+  padding: 10px 15px;
+  font-size: 18px;
+  background-color: #8807F8;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+}
+
+.pesquisarPet-input {
+  font-size: 18px;
+  padding: 5px;
+  width: 20%;
+}
+
+.table {
+  width: 100%;
+  height: 100px;
+  margin: 40px 15px;
+}
+
+.table-header, .table-line {
+  width: 100%;
+}
+
+.col {
+  background-color: #fff;
+  height: 40px;
+  padding-top: 15px;
+  float: left;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  width: 24%;
+}
+
+.col1:hover {
+  background-color: #c787f8;
+}
+
+.col2 {
+  width: 14%;
+}
+
+.col4 {
+  width: 34%;
 }
 

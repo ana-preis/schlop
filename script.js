@@ -7,8 +7,6 @@ let senhaAtualEditar = document.getElementById("senhaAtualEditar")
 let senhaNovaEditar = document.getElementById("senhaNovaEditar")
 let confirmacaoSenhaEditar = document.getElementById("confirmacaoSenhaEditar")
 
-let criar = document.getElementById("criar")    //TEMPORÁRIO
-
 let usuarios = []
 let usuarioAtual = {}
 let indiceUsuarioAtual = usuarios.indexOf(usuarioAtual)
@@ -25,7 +23,7 @@ function Usuario(parametroNome, parametroUsuario, parametroEmail, parametroData,
 
 
 // Rapidao um cadastro aqui pra teste  //TEMPORÁRIO
-function CadastroRapido() {
+/* function CadastroRapido() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
 
@@ -36,21 +34,20 @@ function CadastroRapido() {
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
   } else {
     usuarioAtual = new Usuario(nomeEditar.value, usuarioEditar.value, emailEditar.value, dataNascimentoEditar.value)
-    usuarioAtual.senha = (Math.random()*100).toFixed(0)     //TEMPORARIO
     usuarios.push(usuarioAtual)
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
   }
   
   alert("Cadastro efetuado!")
 
-}
+} */
 
 
 // Vai p/ pagina de Perfil
 function Perfil() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
-  usuarioAtual = usuarios[3]     //TEMPORARIO
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
   document.getElementById("nomePerfil").innerHTML = usuarioAtual.nome
   document.getElementById("usuarioPerfil").innerHTML = usuarioAtual.nomeDeUsuario
@@ -63,14 +60,6 @@ function Perfil() {
 
 //Formatação data: a.split("-").reverse().join("-")
 
-// Vai p/ pagina de Pets
-function Pets() {}
-
-
-// Vai para a página da lista de Pets
-function EditarPets() {}
-
-
 // Vai para a página de edição do Hardware
 function EditarDispositivo() {}
 
@@ -79,21 +68,24 @@ function EditarDispositivo() {}
 function Voltar() {}
 
 
-// Vai p/ página de Edição da Senha
-function EditarSenha() {
+function MostraInfoNoInput() {
+  console.log("entrou funcao")
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
-  window.location.href = "editarSenha.html"
+  document.getElementById("nomeEditar").innerHTML = usuarioAtual.nome
+  document.getElementById("usuarioEditar").innerHTML = usuarioAtual.nomeDeUsuario
+  document.getElementById("emailEditar").innerHTML = usuarioAtual.email
+  document.getElementById("dataNascimentoEditar").innerHTML = usuarioAtual.dataNascimento
 
 }
-
 
 // Salva as novas informações do perfil do usuário
 function SalvarPerfil() {
   
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
-  usuarioAtual = usuarios[0]     //TEMPORARIO
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
-  if (VerificaInputEditarVazio()) { return }
+  if (VerificaInputEditarVazio()) { return  }
   if (NomeDeUsuarioJaExiste(usuarioAtual)) { return }
   if (!ValidaEmail(emailEditar.value)) { return }
   
@@ -130,6 +122,7 @@ function NomeDeUsuarioJaExiste(usuarioAtual) {
 
 }
 
+
 //Verifica se email tem "@" e se tem ".com"
 function ValidaEmail(email) {
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -138,6 +131,7 @@ function ValidaEmail(email) {
   alert("You have entered an invalid email address!")
   return (false)
 }
+
 
 // Salva as novas informações no Objeto usuarioAtual e atualiza o JSON
 function AtualizaPerfil(usuarioAtual) {
@@ -173,7 +167,7 @@ function AtualizaSenha(usuarioAtual) {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
   usuarioAtual = usuarios[2]     //TEMPORARIO
-  if (InputSenhaVazio() || !SenhaAtualCorreta(usuarioAtual) || !SenhaEConfirmacaoIguais()) { return }
+  if (InputSenhaVazio() || !SenhaCorreta(senhaAtualEditar.value, usuarioAtual.senha) || !SenhaEConfirmacaoIguais()) { return }
   usuarioAtual.senha = senhaNovaEditar.value
   localStorage.setItem("usuarios", JSON.stringify(usuarios))
   window.location.href="editarPerfil.html"
@@ -193,29 +187,13 @@ function InputSenhaVazio() {
 }
 
 
-// Verificação se o usuário digitou as senhas iguais ao apertar "Salvar", retorna true se for DIFERENTE
-function SenhaEConfirmacaoIguais() {
+function SaoIguais(senhaInput, senhaReal){
 
-  if (senhaNovaEditar.value !== confirmacaoSenhaEditar.value) {
-    alert("Você digitou senhas diferentes!")
-    return false
-  } 
-  return true
-
-}
-
-
-// Verifica se a senha digitada é igual à senha do Objeto usuarioAtual
-function SenhaAtualCorreta(usuarioAtual) {
-
-  if (senhaAtualEditar.value != usuarioAtual.senha) {
-    alert("A senha digitada não corresponde a sua senha atual!")
+  if (senhaInput != senhaReal){      
     return false
   }
   return true
-
 }
-
 
 
 // Faz o Logout do usuário

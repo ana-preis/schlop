@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schlop - Editar Senha</title>
+  <title>Schlop - Editar Pet</title>
   <link rel="stylesheet" href="style_sistema.css">
 
 
@@ -25,32 +25,38 @@
 
   <div class="container">
 
-    <h1>Editar Senha</h1>
+    <h1>Editar Pets</h1>
 
     <div class="content">
 
-      <label>Senha Atual: </label>
-      <input class="senha-input" id="senhaAtualEditar"></input><br>
+      <label>Nome: </label>
+      <input id="nomePetEditar"></input><br>
 
-      <label>Nova Senha: </label>
-      <input class="senha-input" id="senhaNovaEditar"></input><br>
+      <label>Peso (kg): </label>
+      <input id="pesoPetEditar"></input><label>Kg</label><br>
 
-      <label>Repita a Nova Senha: </label>
-      <input class="senha-input" id="confirmacaoSenhaEditar"></input><br>
+      <label>Raça: </label>
+      <input id="racaPetEditar"></input><br>
+
+      <label>Condição Médica:</label>
+      <select id="condicaoPetEditar">
+        <option value="Saudável">Saudável</option>
+      </select>
 
     </div>
 
     <div class="btn-last">
-      <button onclick="location.href='editarPerfil.html'">Voltar</button>
-      <button class="btn-editar" onclick="AtualizaSenha()">Salvar</button><br>
+      <button onclick="location.href='pets.html'">Voltar</button>
+      <button class="btn-editar" onclick="SalvarPerfil()">Salvar</button>
+      <button onclick="CadastroPetRapido()">cadastro rapido</button>
+      <button onclick="">Cadastrar Tag</button>
     </div>
-
 
 
   </div>
 
 </body>
-<script src="script.js"></script>
+<script src="script_pets.js"></script>
 
 
  </html>
