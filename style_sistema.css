@@ -72,18 +72,24 @@ input {
   font-size: 25px;
 }
 
-.btn-atual {
-  background-color: #7004cf;
+.btn-nav:hover {
+  background-color: #c787f8;
 }
 
-button:hover {
-  background-color: #c787f8;
+.btn-atual {
+  background-color: #7004cf;
 }
 
 .container {
   margin: 80px auto;
   width: 80%;
   background-color: #d4f0e9;
+}
+
+.container label{
+  margin: 20px auto;
+  display: block;
+  text-align: center;
 }
 
 h1 {
@@ -114,7 +120,8 @@ h1 {
 }
 
 input.date-input {
-  width: 20%;
+  width: 15%;
+  min-width: 180px;
 }
 
 input.senha-input {
@@ -146,6 +153,10 @@ button.btn-content:hover {
   font-size: 20px;
   border-radius: 6px;
   border: none;
+}
+
+.btn-last button:hover {
+  background-color: #c787f8;
 }
 
 .btn-editar {
@@ -192,7 +203,7 @@ button.btn-content:hover {
 
 .table {
   width: 100%;
-  height: 100px;
+  height: 400px;
   margin: 40px 15px;
 }
 
@@ -212,6 +223,7 @@ button.btn-content:hover {
 }
 
 .col1:hover {
+  cursor: pointer;
   background-color: #c787f8;
 }
 
@@ -220,6 +232,57 @@ button.btn-content:hover {
 }
 
 .col4 {
-  width: 34%;
+  width: 24%;
 }
 
+.coluna-editar{
+  width: 10%;
+  margin-right: 20px;
+  float: right;
+}
+
+.coluna-editar button{
+  font-size: 18px;
+  line-height: 30px;
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #8807F8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.coluna-editar button:hover {
+  cursor: pointer;
+  background-color: #c787f8;
+}
+
+.esconder {
+  display: none;
+}
+
+.content-pet input {
+  width: 20%;
+}
+
+.content input.peso-input {
+  width: 10%;
+  min-width: 100px
+}
+
+select{
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;  
+}
+
+.excluir {
+  float: right;
+  color: #ac0000;
+  border: none;
+  background: none;
+}
+
+button.excluir:hover {
+  border-radius: 5px;
+  background: #fff;
+}

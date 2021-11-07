@@ -25,11 +25,14 @@
   <div class="container">
 
     <h1>Pets</h1>
+    <label>Clique no nome do Pet para acessar suas informações detalhadas</label><br>
 
-    <button onclick="" class="pesquisarPet btn-last">Pesquisar Pet</button>
-    <input class="pesquisarPet-input">
+    <button onclick="PesquisarPet()" class="pesquisarPet btn-last">Pesquisar Pet</button>
+    <input class="pesquisarPet-input" id="pesquisarPet">
 
-    <div class="table">
+
+    <div class="table" id="table">
+
       <div class="table-header">
         <div class="col">
           Pet
@@ -45,65 +48,27 @@
         </div>
       </div>
 
-      <div class="table-line">
-          <a>
-            <div class="col col1">
-              Pet
-            </div>
-          </a>
-          <div class="col col2">
-            Peso
-          </div>
-          <div class="col">
-            Raça
-          </div>
-          <div class="col col4">
-            Condição Médica
-          </div>
-        </div>
 
     </div>
 
+    
 
-
-      <!-- <table>
-        <thead>
-          <tr>
-            <th>Pet</th>
-            <th>Peso</th>
-            <th>Raça</th>
-            <th>Condição Médica</th>
-            <th>Excluir</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr onclick="EditarPet()">
-            <td id="tableNome"></td>
-            <td id="tablePeso"></td>
-            <td id="tableRaca"></td>
-            <td id="tableCondicao"></td>
-            <td id="tableExcluir">
-              <button onclick="BotaoExcluirTabela()" class="excluirPet">X</button>
-            </td>
-          </tr>
-     
-        </tbody>
-      </table> -->
 
     
 
     <div class="btn-last">
       <button class="verde" onclick="location.href = 'poslogin.html'">Voltar</button>
-      <button onclick="" class="btn-editar">Adicionar Novo Pet</button>
+      <button onclick="window.location.href='addPet.html'" class="btn-editar">Adicionar Novo Pet</button>
     </div>
 
   </div>
 
 </body>
+<script src="script_login.js"></script>
 <script src="script_pets.js"></script>
+<script src="script.js"></script>
 <script>
-  Pets()
+  CriaLinhaTabela()
 </script>
 
-
- </html>
+</html>

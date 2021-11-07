@@ -1,5 +1,5 @@
 // Inputs tela de login
-let usuarioLogin = document.getElementById("usuarioLogin")
+let emailLogin = document.getElementById("emailLogin")
 let senhaLogin = document.getElementById("senhaLogin")
 
 // Inputs tela de cadastro alterar!!
@@ -11,6 +11,7 @@ let emailConfirmaCadastro = document.getElementById("emailConfirmaCadastro")
 let senhaCadastro = document.getElementById("senhaCadastro")
 let senhaConfirmaCadastro = document.getElementById("senhaConfirmaCadastro")
 
+let email = ""
 let usuarios = []
 let usuario = {}
 
@@ -71,19 +72,21 @@ function VerificaEArmazena() {
 
 }
 
+
 function Login(){
 
     usuarios = JSON.parse(localStorage.getItem("usuarios"))
     
-    if(!UsuarioLoginExiste()){
+    if(!EmailLoginExiste()){
 
         return
 
-    }else{
-        usuarioAtual = UsuarioLoginExiste()
-        ArmazenaUsuarioAtual(usuarioAtual)
+    } else {
+        usuarioAtual = EmailLoginExiste()
+        AtualizaUsuarioAtual(usuarioAtual)
     }
 
+    console.log(usuarioAtual)
     if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
       alert("Senha incorreta!")
       return
@@ -93,24 +96,13 @@ function Login(){
 
 }
 
-function ArmazenaUsuarioAtual(user) {
-
-  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  if(user == null) {
-    localStorage.setItem("usuarioAtual", JSON.stringify(user))
-  } else {
-    localStorage.setItem("usuarioAtual", JSON.stringify(user))
-  }
-
-}
-
-function UsuarioLoginExiste() {
+function EmailLoginExiste() {
 
     usuarios = JSON.parse(localStorage.getItem("usuarios"))
 
-    for (i = 0; i < usuarios.length;i++) {
+    for (i = 0; i < usuarios.length; i++) {
     
-        if(usuarioLogin.value == usuarios[i].nomeDeUsuario){
+        if(emailLogin.value.toLowerCase() == usuarios[i].email){
 
             usuarioAtual = usuarios[i]
 
@@ -118,7 +110,7 @@ function UsuarioLoginExiste() {
       
         }
     }
-    alert ("Usuario não existe")
+    alert ("Email não cadastrado")
     return false
 
 }
@@ -131,6 +123,5 @@ function SaoIguais(senhaInput, senhaReal){
     }
     return true
 }
-
 
 

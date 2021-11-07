@@ -1,5 +1,10 @@
+let nomePerfil = document.getElementById("nomePerfil")
+let emailPerfil = document.getElementById("emailPerfil")
+let dataNascimentoPerfil = document.getElementById("dataNascimentoPerfil")
+let dispositivoPerfil = document.getElementById("dispositivoPerfil")
+let petsPerfil = document.getElementById("petsPerfil")
+
 let nomeEditar = document.getElementById("nomeEditar")
-let usuarioEditar = document.getElementById("usuarioEditar")
 let emailEditar = document.getElementById("emailEditar")
 let dataNascimentoEditar = document.getElementById("dataNascimentoEditar")
 
@@ -7,40 +12,7 @@ let senhaAtualEditar = document.getElementById("senhaAtualEditar")
 let senhaNovaEditar = document.getElementById("senhaNovaEditar")
 let confirmacaoSenhaEditar = document.getElementById("confirmacaoSenhaEditar")
 
-let usuarios = []
 let usuarioAtual = {}
-let indiceUsuarioAtual = usuarios.indexOf(usuarioAtual)
-
-function Usuario(parametroNome, parametroUsuario, parametroEmail, parametroData, parametroDispositivo, parametroPets, parametroSenha) {
-  this.nome = parametroNome;
-  this.nomeDeUsuario = parametroUsuario;
-  this.email = parametroEmail;
-  this.dataNascimento = parametroData;
-  this.dispositivos = parametroDispositivo;
-  this.pets = parametroPets
-  this.senha = parametroSenha
-}
-
-
-// Rapidao um cadastro aqui pra teste  //TEMPORÁRIO
-/* function CadastroRapido() {
-
-  usuarios = JSON.parse(localStorage.getItem("usuarios"))
-
-  if (usuarios == null) {
-    usuarios = []
-    usuarioAtual = new Usuario(nomeEditar.value, usuarioEditar.value, emailEditar.value, dataNascimentoEditar.value)
-    usuarios.push(usuarioAtual)
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
-  } else {
-    usuarioAtual = new Usuario(nomeEditar.value, usuarioEditar.value, emailEditar.value, dataNascimentoEditar.value)
-    usuarios.push(usuarioAtual)
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
-  }
-  
-  alert("Cadastro efetuado!")
-
-} */
 
 
 // Vai p/ pagina de Perfil
@@ -49,13 +21,28 @@ function Perfil() {
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
-  document.getElementById("nomePerfil").innerHTML = usuarioAtual.nome
-  document.getElementById("usuarioPerfil").innerHTML = usuarioAtual.nomeDeUsuario
-  document.getElementById("emailPerfil").innerHTML = usuarioAtual.email
-  document.getElementById("dataNascimentoPerfil").innerHTML = usuarioAtual.dataNascimento.split("-").reverse().join(" / ")
-  document.getElementById("dispositivoPerfil").innerHTML = usuarioAtual.dispositivos.join(" , ")
-  document.getElementById("petsPerfil").innerHTML = usuarioAtual.pets.join(" , ")
+  let listaNomes = CriaListaNomesPets(usuarioAtual)
+  console.log(listaNomes)
 
+  nomePerfil.innerHTML = usuarioAtual.nome
+  emailPerfil.innerHTML = usuarioAtual.email
+  dataNascimentoPerfil.innerHTML = usuarioAtual.dataNascimento.split("-").reverse().join(" / ")
+  //dispositivoPerfil.innerHTML = usuarioAtual.dispositivos.join(" , ")
+  petsPerfil.innerHTML = listaNomes
+
+
+}
+
+function CriaListaNomesPets(user) {
+  
+  let listaNomes = []
+  let listaPets = user.pets
+
+  for (i = 0; i < listaPets.length; i++) {
+    listaNomes.push(listaPets[i].nome)
+    console.log(listaNomes.join(" , "))
+  }
+  return listaNomes.join(" , ")
 }
 
 //Formatação data: a.split("-").reverse().join("-")
@@ -67,15 +54,44 @@ function EditarDispositivo() {}
 // Volta p/ página anterior
 function Voltar() {}
 
-
-function MostraInfoNoInput() {
-  console.log("entrou funcao")
+//Volta para Homepage e zera usuarioAtual
+function Sair() {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  petAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  ZeraUsuarioAtual(usuarioAtual)
+  petAtual = {}
+  AtualizaPetAtual(petAtual)
+  window.location.href = "homepage.html"
+}
 
-  document.getElementById("nomeEditar").innerHTML = usuarioAtual.nome
-  document.getElementById("usuarioEditar").innerHTML = usuarioAtual.nomeDeUsuario
-  document.getElementById("emailEditar").innerHTML = usuarioAtual.email
-  document.getElementById("dataNascimentoEditar").innerHTML = usuarioAtual.dataNascimento
+function AtualizaPetAtual(pet) {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+  petAtual = pet
+  localStorage.setItem("petAtual", JSON.stringify(petAtual))
+
+}
+
+
+function ZeraUsuarioAtual(user) {
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  if(user == null) {
+    usuarioAtual = {}
+    localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
+  } else {
+    usuarioAtual = {}
+    localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
+  }
+
+}
+
+
+function MostraInfoNoInputPerfil() {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  nomeEditar.value = usuarioAtual.nome
+  emailEditar.value = usuarioAtual.email
+  dataNascimentoEditar.value = usuarioAtual.dataNascimento
 
 }
 
@@ -86,10 +102,10 @@ function SalvarPerfil() {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
   if (VerificaInputEditarVazio()) { return  }
-  if (NomeDeUsuarioJaExiste(usuarioAtual)) { return }
+  if (EmailJaExiste(usuarioAtual)) { return }
   if (!ValidaEmail(emailEditar.value)) { return }
   
-  AtualizaPerfil(usuarioAtual)
+  EditaUsuario(usuarioAtual)
   
 }
 
@@ -97,7 +113,7 @@ function SalvarPerfil() {
 // Verificação se o usuário preencheu todos os inputs ao apertar "Salvar",  retorna true se estiver VAZIO
 function VerificaInputEditarVazio() {
 
-  if (nomeEditar.value == "" || emailEditar.value == "" || dataNascimentoEditar.value == "" || usuarioEditar.value == "") {
+  if (nomeEditar.value == "" || emailEditar.value == "" || dataNascimentoEditar.value == "") {
     alert("Você deixou algum campo vazio!")
     return true
   } else { return false }
@@ -105,19 +121,19 @@ function VerificaInputEditarVazio() {
 }
 
 
-//Verifica se o nome de usuário já foi cadastrado no armazenamento local
-function NomeDeUsuarioJaExiste(usuarioAtual) {
+//Verifica se o email já foi cadastrado no armazenamento local
+function EmailJaExiste(usuarioAtual) {
 
   for (i = 0; i < usuarios.length; i++) {
-    if (usuarioEditar.value == usuarios[i].nomeDeUsuario){
+    if (emailEditar.value == usuarios[i].email){
       if (usuarioAtual.email != usuarios[i].email) {
-        alert("Esse nome de usuário já existe!")
-        document.getElementById("usuarioEditar").style.color = "red"
+        alert("Esse email já foi cadastrado!")
+        document.getElementById("emailEditar").style.color = "red"
         return true
       }
     }
   }
-  document.getElementById("usuarioEditar").style.color = "black"
+  document.getElementById("emailEditar").style.color = "black"
   return false
 
 }
@@ -133,16 +149,20 @@ function ValidaEmail(email) {
 }
 
 
-// Salva as novas informações no Objeto usuarioAtual e atualiza o JSON
-function AtualizaPerfil(usuarioAtual) {
+// Salva as novas informações no Objeto usuarioAtual e atualiza o JSON        //TESTAR
+function EditaUsuario(atual) {
 
-  usuarioAtual.nome = nomeEditar.value
-  usuarioAtual.nomeDeUsuario = usuarioEditar.value
-  usuarioAtual.email = emailEditar.value
-  usuarioAtual.dataNascimento = dataNascimentoEditar.value
+  atual.nome = nomeEditar.value
+  atual.email = emailEditar.value
+  atual.dataNascimento = dataNascimentoEditar.value
+    
+  AtualizaUsuarioAtual(atual)
+  AtualizaUsuarios(atual)
 
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+  window.location.href = "perfil.html"
+
   return alert("Cadastro atualizado com sucesso!")
+
 
 }
 
@@ -150,26 +170,56 @@ function AtualizaPerfil(usuarioAtual) {
 //Deleta a conta do usuário que está logado e retorna para a Home page
 function DeletaConta() {
 
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  usuarios = JSON.parse(localStorage.getItem("usuarios"));
+  console.log(indiceUsuarioAtual)
+
   if(confirm("Tem certeza que deseja deletar sua conta?")) {
-    usuarios = JSON.parse(localStorage.getItem("usuarios"))
-    usuarioAtual = usuarios[0]     //TEMPORARIO
-    usuarios.splice(usuarioAtual, 1)
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    
+    usuarioAtual = {}
+
+    AtualizaUsuarioAtual(usuarioAtual)
+    AtualizaUsuarios(usuarioAtual)
+
     alert("Sua conta foi excluída com sucesso!")
-    window.location.href="alternat_index.html"
+
+    window.location.href="homepage.html"
   }
 
 }
 
 
+//Atualiza lista de usuarios no Armazenamento Local
+function AtualizaUsuarios(user) {
+  usuarios = JSON.parse(localStorage.getItem("usuarios"));
+
+  for(i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].email == user.email) {
+      usuarios[i] = user
+    }
+  }
+
+  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+}
+
+function AtualizaUsuarioAtual(atual) {
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  usuarioAtual = atual
+  localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
+}
+
 // Salva a nova senha no Objeto usuarioAtual e atualiza o JSON
 function AtualizaSenha(usuarioAtual) {
 
-  usuarios = JSON.parse(localStorage.getItem("usuarios"))
-  usuarioAtual = usuarios[2]     //TEMPORARIO
-  if (InputSenhaVazio() || !SenhaCorreta(senhaAtualEditar.value, usuarioAtual.senha) || !SenhaEConfirmacaoIguais()) { return }
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"))
+
+  if (InputSenhaVazio() || !SaoIguais(senhaAtualEditar.value, usuarioAtual.senha) || !SaoIguais(senhaNovaEditar.value, confirmacaoSenhaEditar.value)) { return }
   usuarioAtual.senha = senhaNovaEditar.value
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+  AtualizaUsuarioAtual(usuarioAtual)
+  AtualizaUsuarios(usuarioAtual)
+
   window.location.href="editarPerfil.html"
   return alert("Senha atualizada com sucesso")
 
@@ -194,8 +244,3 @@ function SaoIguais(senhaInput, senhaReal){
   }
   return true
 }
-
-
-// Faz o Logout do usuário
-function Sair() {}
-

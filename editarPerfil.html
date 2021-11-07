@@ -28,13 +28,12 @@
     <h1>Editar Perfil</h1>
 
     <div class="content">
+      
+      <button class="excluir" onclick="DeletaConta()">Excluir conta</button>
 
       <div class="form-content">
         <label>Nome: </label>
         <input id="nomeEditar"></input><br>
-  
-        <label>Usuário: </label>
-        <input id="usuarioEditar"></input><br>
   
         <label>Email: </label>
         <input id="emailEditar"></input><br>
@@ -44,9 +43,8 @@
       </div>
 
       <button class="btn-content" onclick="EditarDispositivo()">Editar Dispositivos</button><br>
-      <button class="btn-content" onclick="EditarPets()">Editar Pets</button><br>
+      <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button><br>
       <button class="btn-content" onclick="window.location.href='editarSenha.html'">Editar Senha</button><br>
-      <button class="btn-content" onclick="DeletaConta()">Excluir conta</button>
 
     </div>
 
@@ -60,6 +58,9 @@
 
 </body>
 <script src="script.js"></script>
+<script>
+  MostraInfoNoInputPerfil()
+</script>
 
 
 
