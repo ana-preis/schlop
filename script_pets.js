@@ -81,6 +81,14 @@ function InputVazioPet() {
 //Armazenamento local do Pet no Objeto usuarioAtual
 function ArmazenaPetUsuarioAtual(user) {
 
+  if (user.pets == null) {
+    user.pets = []
+    pet = new Pet(nomePetEditar.value, pesoPetEditar.value, racaPetEditar.value, condicaoPetEditar.value)
+    user.pets.push(pet)
+    localStorage.setItem("usuarioAtual", JSON.stringify(user))
+    return
+  }
+
   pet = new Pet(nomePetEditar.value, pesoPetEditar.value, racaPetEditar.value, condicaoPetEditar.value)
   user.pets.push(pet)
   localStorage.setItem("usuarioAtual", JSON.stringify(user))

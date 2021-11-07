@@ -27,11 +27,11 @@
     
     <div class="container">
 
-        <h1>Bem Vindo(a), </h1>
+        <h1 id="bemVindo"></h1>
 
-        <div class="row">
+        <div class="row" id="cardRow">
 
-            <div class="card">
+            <div class="card" id="cardAdd">
                 <a onclick="location.href='addPet.html'">
                     <h3>ADD PET</h3>
                     <h3>+</h3>
@@ -48,5 +48,9 @@
 
 <script src="script_login.js"></script>
 <script src="script.js"></script>
+<script>
+    MostrarNomeUsuario()
+    CriaCardPets()
+</script>
 
 </html>

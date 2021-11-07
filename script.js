@@ -1,3 +1,6 @@
+let bemVindo = document.getElementById("bemVindo")
+let cardAdd = document.getElementById("cardAdd")
+
 let nomePerfil = document.getElementById("nomePerfil")
 let emailPerfil = document.getElementById("emailPerfil")
 let dataNascimentoPerfil = document.getElementById("dataNascimentoPerfil")
@@ -13,6 +16,75 @@ let senhaNovaEditar = document.getElementById("senhaNovaEditar")
 let confirmacaoSenhaEditar = document.getElementById("confirmacaoSenhaEditar")
 
 let usuarioAtual = {}
+
+function MostrarNomeUsuario() {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  bemVindo.innerHTML = "Bem vindo(a), " + usuarioAtual.nome
+
+}
+
+function CriaCardPets() {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  let pets = usuarioAtual.pets
+
+  if (pets == null) {
+    cardAdd.classList.remove("esconder")
+    return
+  }
+
+  cardAdd.classList.add("esconder")
+
+  for(i = 0; i < pets.length; i++) {
+    let cardPet = document.createElement("div")
+    let linkPet = document.createElement("a") 
+    let nomePet = document.createElement("h3")
+    let pesoPet = document.createElement("h3")
+
+    nomePet.textContent = pets[i].nome
+    pesoPet.textContent = pets[i].peso + "Kg"
+
+    document.getElementById("cardRow").appendChild(cardPet)
+    cardPet.appendChild(linkPet)
+    linkPet.appendChild(nomePet)
+    linkPet.appendChild(pesoPet)
+
+    cardPet.classList.add("card")
+
+    idNome = i
+    cardPet.setAttribute("id", idNome)
+
+    cardPet.addEventListener("click", e => {
+      CriaPetAtual(cardPet.id)
+      window.location.href = "editarPet.html"   //DIRECIONA P/ DETALHE PET -- ARRUMAR
+    })
+
+  }
+
+}
+
+//Armazena informações do pet clicado na página pets      //tem como direcionar do outro script??
+
+
+function CriaPetAtual(id) {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+
+    if (petAtual == null){
+
+      petAtual = {}
+
+      AtualizaPetAtual(usuarioAtual.pets[id])
+
+    } else {
+
+      AtualizaPetAtual(usuarioAtual.pets[id])
+
+    }
+
+}
 
 
 // Vai p/ pagina de Perfil
