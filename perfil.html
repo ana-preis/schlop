@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schlop - Perfil</title>
-  <link rel="stylesheet" href="style_sistema.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schlop - Perfil</title>
+    <link rel="stylesheet" href="style_sistema.css">
 
-</head>
-<body>
+  </head>
+  <body>
 
-  <div class="header">
-    <a>
-      <img class="logo" src="imagens/vetorizado_logo(3).png">
-    </a>
-    <button class="sair verde" onclick="Sair()">Sair</button>
-  </div>
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/vetorizado_logo(3).png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+    </div>
 
-  <div class="nav">
-    <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
-    <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
-  </div>
+    <div class="nav">
+      <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+    </div>
 
-  <div class="container">
+    <div class="container">
 
-    <h1>Perfil</h1>
+      <h1>Perfil</h1>
 
-    <div class="content">
+      <div class="content">
 
-      <div class="form-content">
-        <label>Nome: </label>
-        <label id="nomePerfil"></label><br>
-  
-        <label>Email: </label>
-        <label id="emailPerfil"></label><br>
-  
-        <label>Data Nascimento: </label>
-        <label id="dataNascimentoPerfil"></label><br>
-  
-        <label>Dispositivo conectado: </label>
-        <label id="dispositivoPerfil"></label><br>
-  
-        <label>Pets: </label>
-        <label id="petsPerfil"></label><br>
+        <div class="form-content">
+          <label>Nome: </label>
+          <label id="nomePerfil"></label><br>
+    
+          <label>Email: </label>
+          <label id="emailPerfil"></label><br>
+    
+          <label>Data Nascimento: </label>
+          <label id="dataNascimentoPerfil"></label><br>
+    
+          <label>Dispositivo conectado: </label>
+          <label id="dispositivoPerfil"></label><br>
+    
+          <label>Pets: </label>
+          <label id="petsPerfil"></label><br>
+        </div>
+
+        <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button>
       </div>
 
-      <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button>
+      <div class="btn-last">
+        <button onclick="history.go(-1);">Voltar</button>
+        <button class="btn-editar" onclick="location.href = 'editarPerfil.html'">Editar</button>
+      </div>
+
     </div>
 
-    <div class="btn-last">
-      <button onclick="history.go(-1);">Voltar</button>
-      <button class="btn-editar" onclick="location.href = 'editarPerfil.html'">Editar</button>
-    </div>
-
-  </div>
-
-</body>
-<script src="script.js"></script>
-<script src="script_login.js"></script>
-<script src="script_pets.js"></script>
-<script>
-  Perfil()
-</script>
+  </body>
+  <script src="script.js"></script>
+  <script src="script_login.js"></script>
+  <script src="script_pets.js"></script>
+  <script>
+    Perfil()
+  </script>
 
 
  </html>

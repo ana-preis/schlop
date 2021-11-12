@@ -4,6 +4,7 @@ let racaPetEditar = document.getElementById("racaPetEditar")
 let condicaoPetEditar = document.getElementById("condicaoPetEditar")
 
 let pesquisarPet = document.getElementById("pesquisarPet")
+let mensagemPesquisa = document.getElementById("mensagemPesquisa")
 
 let pets = []
 let pet = {}
@@ -19,7 +20,8 @@ function Pet(parametroNome, parametroPeso, parametroRaca, parametroCondicao, par
 function PesquisarPet() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  var pets = usuarioAtual.pets
+  let pets = usuarioAtual.pets
+  let nenhumPet = 0
 
   RemoveClassEsconder(pets)
 
@@ -28,12 +30,18 @@ function PesquisarPet() {
     if ((pets[i].nome).toLowerCase() != pesquisarPet.value.toLowerCase()) {
       let linhaTabela = document.getElementById(idTable)
       linhaTabela.classList.add("esconder")
+      nenhumPet++
     }
 
   }
 
   if (pesquisarPet.value == "") {
     RemoveClassEsconder(pets)
+    mensagemPesquisa.textContent = ""
+  } else if (nenhumPet == pets.length) {
+    mensagemPesquisa.textContent = "Nenhum pet encontrado"
+  } else {
+    mensagemPesquisa.textContent = ""
   }
 
 }

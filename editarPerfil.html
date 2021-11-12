@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schlop - Editar Perfil</title>
-  <link rel="stylesheet" href="style_sistema.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schlop - Editar Perfil</title>
+    <link rel="stylesheet" href="style_sistema.css">
 
 
-</head>
-<body>
+  </head>
 
-  <div class="header">
-    <a>
-      <img class="logo" src="imagens/vetorizado_logo(3).png">
-    </a>
-    <button class="sair verde" onclick="Sair()">Sair</button>
-  </div>
+  <body>
 
-  <div class="nav">
-    <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-    <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
-  </div>
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/vetorizado_logo(3).png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+    </div>
 
-  <div class="container">
+    <div class="nav">
+      <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+    </div>
 
-    <h1>Editar Perfil</h1>
+    <div class="bg-container">
+      <div class="container">
 
-    <div class="content">
+        <h1>Editar Perfil</h1>
+
+        <div class="content">
+          
+          <button class="excluir" onclick="DeletaConta()">Excluir conta</button>
+
+          <div class="form-content">
+            <label>Nome: </label>
+            <input id="nomeEditar"></input><br>
       
-      <button class="excluir" onclick="DeletaConta()">Excluir conta</button>
+            <label>Email: </label>
+            <input id="emailEditar"></input><br>
+      
+            <label>Data Nascimento: </label>
+            <input class="date-input" type="date" id="dataNascimentoEditar"></input><br>
+          </div>
 
-      <div class="form-content">
-        <label>Nome: </label>
-        <input id="nomeEditar"></input><br>
-  
-        <label>Email: </label>
-        <input id="emailEditar"></input><br>
-  
-        <label>Data Nascimento: </label>
-        <input class="date-input" type="date" id="dataNascimentoEditar"></input><br>
+          <button class="btn-content" onclick="EditarDispositivo()">Editar Dispositivos</button><br>
+          <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button><br>
+          <button class="btn-content" onclick="window.location.href='editarSenha.html'">Editar Senha</button><br>
+
+        </div>
+
+        <div class="btn-last">
+          <button onclick="history.go(-1);">Voltar</button>
+          <button class="btn-editar" onclick="SalvarPerfil()">Salvar</button>
+        </div>
+
+
       </div>
-
-      <button class="btn-content" onclick="EditarDispositivo()">Editar Dispositivos</button><br>
-      <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button><br>
-      <button class="btn-content" onclick="window.location.href='editarSenha.html'">Editar Senha</button><br>
-
     </div>
 
-    <div class="btn-last">
-      <button onclick="history.go(-1);">Voltar</button>
-      <button class="btn-editar" onclick="SalvarPerfil()">Salvar</button>
-    </div>
+  </body>
 
-
-  </div>
-
-</body>
-<script src="script.js"></script>
-<script>
-  MostraInfoNoInputPerfil()
-</script>
-
-
+  <script src="script.js"></script>
+  <script>
+    MostraInfoNoInputPerfil()
+  </script>
 
  </html>

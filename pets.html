@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schlop - Pets</title>
-  <link rel="stylesheet" href="style_sistema.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schlop - Pets</title>
+    <link rel="stylesheet" href="style_sistema.css">
 
-</head>
-<body>
+  </head>
+  <body>
 
-  <div class="header">
-    <a>
-      <img class="logo" src="imagens/vetorizado_logo(3).png">
-    </a>
-    <button class="sair verde" onclick="Sair()">Sair</button>
-  </div>
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/vetorizado_logo(3).png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+    </div>
 
-  <div class="nav">
-    <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-    <button class="btn-nav btn-atual">Pets</button>
-  </div>
+    <div class="nav">
+      <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav btn-atual">Pets</button>
+    </div>
 
-  <div class="container">
+    <div class="container">
 
-    <h1>Pets</h1>
-    <label>Clique no nome do Pet para acessar suas informações detalhadas</label><br>
+      <h1>Pets</h1>
+      <label>Clique no nome do Pet para acessar suas informações detalhadas</label><br>
 
-    <button onclick="PesquisarPet()" class="pesquisarPet btn-last">Pesquisar Pet</button>
-    <input class="pesquisarPet-input" id="pesquisarPet">
+      <button onclick="PesquisarPet()" class="pesquisarPet btn-last">
+        <img src="imagens/search.png" class="icone">
+        Pesquisar Pet
+      </button>
+      <input class="pesquisarPet-input" id="pesquisarPet">
+      <label id="mensagemPesquisa"></label>
 
 
-    <div class="table" id="table">
+      <div class="table" id="table">
 
-      <div class="table-header">
-        <div class="col">
-          Pet
+        <div class="table-header">
+          <div class="col">
+            Pet
+          </div>
+          <div class="col col2">
+            Peso
+          </div>
+          <div class="col">
+            Raça
+          </div>
+          <div class="col col4">
+            Condição Médica
+          </div>
         </div>
-        <div class="col col2">
-          Peso
-        </div>
-        <div class="col">
-          Raça
-        </div>
-        <div class="col col4">
-          Condição Médica
-        </div>
+
+      </div>
+
+      <div class="btn-last">
+        <button class="verde" onclick="history.go(-1);">Voltar</button>
+        <button onclick="window.location.href='addPet.html'" class="btn-editar">
+          <img src="imagens/plus.png" class="icone"> 
+          Adicionar Novo Pet
+        </button>
       </div>
 
     </div>
 
-    <div class="btn-last">
-      <button class="verde" onclick="history.go(-1);">Voltar</button>
-      <button onclick="window.location.href='addPet.html'" class="btn-editar">Adicionar Novo Pet</button>
-    </div>
-
-  </div>
-
-</body>
-<script src="script_login.js"></script>
-<script src="script_pets.js"></script>
-<script src="script.js"></script>
-<script>
-  CriaLinhaTabela()
-</script>
+  </body>
+  
+  <script src="script_login.js"></script>
+  <script src="script_pets.js"></script>
+  <script src="script.js"></script>
+  <script>
+    CriaLinhaTabela()
+  </script>
 
 </html>
