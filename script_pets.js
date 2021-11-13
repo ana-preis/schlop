@@ -215,6 +215,8 @@ function EditaPet() {
 
   alert("Cadastro do Pet atualizado com sucesso!")
 
+  window.location.href="pets.html"
+
 }
 
 

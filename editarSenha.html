@@ -20,35 +20,37 @@
       <button class="sair verde" onclick="Sair()">Sair</button>
     </div>
 
-    <div class="nav">
-      <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
-    </div>
-
-    <div class="container">
-
-      <h1>Editar Senha</h1>
-
-      <div class="content">
-
-        <label>Senha Atual: </label>
-        <input class="senha-input" id="senhaAtualEditar" type="password"></input><br>
-
-        <label>Nova Senha: </label>
-        <input class="senha-input" id="senhaNovaEditar" type="password"></input><br>
-
-        <label>Repita a Nova Senha: </label>
-        <input class="senha-input" id="confirmacaoSenhaEditar" type="password"></input><br>
-
+    <div class="bg-container">
+      <div class="nav">
+        <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+        <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
       </div>
 
-      <div class="btn-last">
-        <button onclick="history.go(-1);">Voltar</button>
-        <button class="btn-editar" onclick="AtualizaSenha()">Salvar</button><br>
+      <div class="container">
+
+        <h1>Editar Senha</h1>
+
+        <div class="content">
+
+          <label>Senha Atual: </label>
+          <input class="senha-input" id="senhaAtualEditar" type="password"></input><br>
+
+          <label>Nova Senha: </label>
+          <input class="senha-input" id="senhaNovaEditar" type="password"></input><br>
+
+          <label>Repita a Nova Senha: </label>
+          <input class="senha-input" id="confirmacaoSenhaEditar" type="password"></input><br>
+
+        </div>
+
+        <div class="btn-last">
+          <button onclick="history.go(-1);">Voltar</button>
+          <button class="btn-editar" onclick="AtualizaSenha()">Salvar</button><br>
+        </div>
+
+
+
       </div>
-
-
-
     </div>
 
   </body>

@@ -18,51 +18,53 @@
       <button class="sair verde" onclick="Sair()">Sair</button>
     </div>
 
-    <div class="nav">
-      <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-      <button class="btn-nav btn-atual">Pets</button>
-    </div>
+    <div class="bg-container">
+      <div class="nav">
+        <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+        <button class="btn-nav btn-atual">Pets</button>
+      </div>
 
-    <div class="container">
+      <div class="container">
 
-      <h1>Pets</h1>
-      <label>Clique no nome do Pet para acessar suas informações detalhadas</label><br>
+        <h1>Pets</h1>
+        <label>Clique no nome do Pet para acessar suas informações detalhadas</label><br>
 
-      <button onclick="PesquisarPet()" class="pesquisarPet btn-last">
-        <img src="imagens/search.png" class="icone">
-        Pesquisar Pet
-      </button>
-      <input class="pesquisarPet-input" id="pesquisarPet">
-      <label id="mensagemPesquisa"></label>
+        <button onclick="PesquisarPet()" class="pesquisarPet btn-last">
+          <img src="imagens/search.png" class="icone">
+          Pesquisar Pet
+        </button>
+        <input class="pesquisarPet-input" id="pesquisarPet">
+        <label id="mensagemPesquisa"></label>
 
 
-      <div class="table" id="table">
+        <div class="table" id="table">
 
-        <div class="table-header">
-          <div class="col">
-            Pet
+          <div class="table-header">
+            <div class="col">
+              Pet
+            </div>
+            <div class="col col2">
+              Peso
+            </div>
+            <div class="col">
+              Raça
+            </div>
+            <div class="col col4">
+              Condição Médica
+            </div>
           </div>
-          <div class="col col2">
-            Peso
-          </div>
-          <div class="col">
-            Raça
-          </div>
-          <div class="col col4">
-            Condição Médica
-          </div>
+
+        </div>
+
+        <div class="btn-last">
+          <button class="verde" onclick="history.go(-1);">Voltar</button>
+          <button onclick="window.location.href='addPet.html'" class="btn-editar">
+            <img src="imagens/plus.png" class="icone"> 
+            Adicionar Novo Pet
+          </button>
         </div>
 
       </div>
-
-      <div class="btn-last">
-        <button class="verde" onclick="history.go(-1);">Voltar</button>
-        <button onclick="window.location.href='addPet.html'" class="btn-editar">
-          <img src="imagens/plus.png" class="icone"> 
-          Adicionar Novo Pet
-        </button>
-      </div>
-
     </div>
 
   </body>

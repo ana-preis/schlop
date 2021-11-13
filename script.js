@@ -93,15 +93,16 @@ function Perfil() {
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
-  let listaNomes = CriaListaNomesPets(usuarioAtual)
-  console.log(listaNomes)
+  if (usuarioAtual.pets != null) {
+    let listaNomes = CriaListaNomesPets(usuarioAtual)
+    console.log(listaNomes)
+    petsPerfil.innerHTML = listaNomes
+  }
 
   nomePerfil.innerHTML = usuarioAtual.nome
   emailPerfil.innerHTML = usuarioAtual.email
   dataNascimentoPerfil.innerHTML = usuarioAtual.dataNascimento.split("-").reverse().join(" / ")
   //dispositivoPerfil.innerHTML = usuarioAtual.dispositivos.join(" , ")
-  petsPerfil.innerHTML = listaNomes
-
 
 }
 

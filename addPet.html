@@ -19,44 +19,56 @@
       <button class="sair verde" onclick="Sair()">Sair</button>
     </div>
 
-    <div class="nav">
-      <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
-    </div>
-
-    <div class="container">
-
-      <h1>Adicionar Novo Pet</h1>
-
-      <div class="content content-pet">
-
-        <label>Nome: </label>
-        <input id="nomePetEditar"></input><br>
-
-        <label>Peso (kg): </label>
-        <input id="pesoPetEditar" class="peso-input" ></input><label>Kg</label><br>
-
-        <label>Raça: </label>
-        <input id="racaPetEditar"></input><br>
-
-        <label>Condição Médica:</label>
-        <select id="condicaoPetEditar">
-          <option value="Saudável">Saudável</option>
-        </select><br>
-
-        <button class="btn-content" onclick="">Cadastrar Tag</button><br>
-
+    <div class="bg-container">
+      <div class="nav">
+        <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+        <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
       </div>
 
-      <div class="btn-last">
-        <button onclick="history.go(-1);">Voltar</button>
-        <button class="btn-editar" onclick="CadastroPet()">
-          <img src="imagens/plus.png" class="icone"> 
-          Adicionar
-        </button>
+      <div class="container">
+
+        <h1>Adicionar Novo Pet</h1>
+
+        <div class="content content-pet">
+
+          <label>Nome: </label>
+          <input id="nomePetEditar"></input><br>
+
+          <label>Peso (kg): </label>
+          <input id="pesoPetEditar" class="peso-input" ></input><label>Kg</label><br>
+
+          <label>Raça: </label>
+          <input id="racaPetEditar"></input><br>
+
+          <label>Condição Médica:</label>
+          <select id="condicaoPetEditar">
+            <option value="Saudável">Saudável</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Doença Renal Crônica">Doença Renal Crônica</option>
+            <option value="Gastroenterite por mudança alimentar">Gastroenterite por mudança alimentar</option>
+            <option value="Gastroenterite por intoxicação">Gastroenterite por intoxicação</option>
+            <option value="Gastroenterite por medicamentosa">Gastroenterite por medicamentosa</option>
+            <option value="Gastroenterite por ingestão de alimento deteriorado">Gastroenterite por ingestão de alimento deteriorado</option>
+            <option value="Girardíase">Girardíase</option>
+            <option value="Hipertireoidismo">Hipertireoidismo</option>
+            <option value="Síndrome de Cushing">Síndrome de Cushing</option>
+            <option value="Verminose intestinal">Verminose intestinal</option>
+            <option value="Outros">Outros</option>
+          </select><br>
+
+          <button class="btn-content" onclick="">Cadastrar Tag</button><br>
+
+        </div>
+
+        <div class="btn-last">
+          <button onclick="history.go(-1);">Voltar</button>
+          <button class="btn-editar" onclick="CadastroPet()">
+            <img src="imagens/plus.png" class="icone"> 
+            Adicionar
+          </button>
+        </div>
+
       </div>
-
-
     </div>
 
   </body>
