@@ -4,7 +4,6 @@ let senhaLogin = document.getElementById("senhaLogin")
 
 // Inputs tela de cadastro alterar!!
 let nomeCadastro = document.getElementById("nomeCadastro")
-let usuarioCadastro = document.getElementById("userCadastro")
 let dataCadastro = document.getElementById("dataCadastro")
 let emailCadastro = document.getElementById("emailCadastro")
 let emailConfirmaCadastro = document.getElementById("emailConfirmaCadastro")
@@ -15,9 +14,8 @@ let email = ""
 let usuarios = []
 let usuario = {}
 
-function Usuario(parametroNome, parametroUsuario, parametroEmail, parametroData, parametroSenha, parametroDispositivo, parametroPets) {
+function Usuario(parametroNome, parametroEmail, parametroData, parametroSenha, parametroDispositivo, parametroPets) {
     this.nome = parametroNome;
-    this.nomeDeUsuario = parametroUsuario;
     this.email = parametroEmail;
     this.dataNascimento = parametroData;
     this.senha = parametroSenha
@@ -28,6 +26,11 @@ function Usuario(parametroNome, parametroUsuario, parametroEmail, parametroData,
 function CadastroUsuario(){
 
     usuarios = JSON.parse(localStorage.getItem("usuarios"));
+    document.getElementById("emailCadastro").style.color = "black"
+    document.getElementById("emailConfirmaCadastro").style.color = "black"
+    document.getElementById("senhaCadastro").style.color = "black"
+    document.getElementById("senhaConfirmaCadastro").style.color = "black"
+
 
     if (usuarios == null){
 
@@ -47,11 +50,18 @@ function CadastroUsuario(){
 
     alert("Cadastro realizado com sucesso!")
 
-    window.location.href="homepage.html"
+    window.location.href="index.html"
 
 }
 
 function VerificaEArmazena() {
+
+  if(VerificaInputCadastrarVazio()) { return }
+
+  if(!ValidaEmail(emailCadastro.value)) { 
+    document.getElementById("emailCadastro").style.color = "red"
+    return
+   }
 
   if(!SaoIguais(senhaCadastro.value, senhaConfirmaCadastro.value)) {
     alert("Você digitou senhas diferentes!")
@@ -66,7 +76,7 @@ function VerificaEArmazena() {
     return false
   }
 
-  usuario = new Usuario(nomeCadastro.value, usuarioCadastro.value, emailCadastro.value, dataCadastro.value, senhaCadastro.value)
+  usuario = new Usuario(nomeCadastro.value, emailCadastro.value, dataCadastro.value, senhaCadastro.value)
 
   usuarios.push(usuario)
 
@@ -131,3 +141,19 @@ function SaoIguais(senhaInput, senhaReal){
 }
 
 
+function VerificaInputCadastrarVazio() {
+
+  if (nomeCadastro.value == "" || dataCadastro.value == "" || emailCadastro.value == "" || emailConfirmaCadastro.value == "" || senhaCadastro.value == "" || senhaConfirmaCadastro.value == "") {
+    alert("Você deixou algum campo vazio!")
+    return true
+  } else { return false }
+
+}
+
+function ValidaEmail(email) {
+  if (/\S+@\S+\.\S+/.test(email)) {
+     return (true)
+   }
+   alert("Endereço de email inválido!")
+   return (false)
+}
