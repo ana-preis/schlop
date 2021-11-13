@@ -17,6 +17,8 @@ function Pet(parametroNome, parametroPeso, parametroRaca, parametroCondicao, par
   this.tag = parametroTag;
 }
 
+
+// Seleciona o pet pesquisado e faz verificações
 function PesquisarPet() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -103,7 +105,6 @@ function ArmazenaPetUsuarioAtual(user) {
 
 }
 
-
 //Cria DIVS (linhas) da tabela de Pets de acordo com a quantidade de Pets
 function CriaLinhaTabela() {
 
@@ -162,7 +163,6 @@ function CriaLinhaTabela() {
 
 }
 
-
 //Armazena informações do pet clicado na página pets
 function CriaPetAtual(id) {
 
@@ -182,7 +182,6 @@ function CriaPetAtual(id) {
     }
 
 }
-
 
 //Atualiza valores novos na chave petAtual, usuarioAtual e usuarios
 function EditaPet() {
@@ -219,7 +218,6 @@ function EditaPet() {
 
 }
 
-
 //Exclui cadastro do PetAtual e atualiza pet Atual
 function ExcluirCadastroPet() {
   
@@ -255,7 +253,6 @@ function AtualizaPetAtual(pet) {
   localStorage.setItem("petAtual", JSON.stringify(petAtual))
 
 }
-
 
 //Preenche os inputs com informações do Pet clicado
 function MostraInfoNoInputPets() {

@@ -23,6 +23,8 @@ function Usuario(parametroNome, parametroEmail, parametroData, parametroSenha, p
     this.pets = parametroPets;
   }
 
+
+//Novo Cadastro
 function CadastroUsuario(){
 
     usuarios = JSON.parse(localStorage.getItem("usuarios"));
@@ -54,6 +56,7 @@ function CadastroUsuario(){
 
 }
 
+// Verificalções de input de cadastro e armazenamento
 function VerificaEArmazena() {
 
   if(VerificaInputCadastrarVazio()) { return }
@@ -86,7 +89,7 @@ function VerificaEArmazena() {
 
 }
 
-
+//Entra no sistema e cria usuarioAtual
 function Login(){
 
     usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -111,6 +114,7 @@ function Login(){
 
 }
 
+//Verifica se email já foi armazenado
 function EmailLoginExiste() {
 
     usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -131,6 +135,7 @@ function EmailLoginExiste() {
 
 }
 
+//Verifica se duas strings são iguais
 function SaoIguais(senhaInput, senhaReal){
 
   console.log(senhaInput, senhaReal)
@@ -140,7 +145,7 @@ function SaoIguais(senhaInput, senhaReal){
     return true
 }
 
-
+//Verifica se o usuario deixou input em branco e mostra alert
 function VerificaInputCadastrarVazio() {
 
   if (nomeCadastro.value == "" || dataCadastro.value == "" || emailCadastro.value == "" || emailConfirmaCadastro.value == "" || senhaCadastro.value == "" || senhaConfirmaCadastro.value == "") {
@@ -150,6 +155,7 @@ function VerificaInputCadastrarVazio() {
 
 }
 
+//Verifica se email tem @, ".", e se tem conteudo antes e depois do arroba
 function ValidaEmail(email) {
   if (/\S+@\S+\.\S+/.test(email)) {
      return (true)

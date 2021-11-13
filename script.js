@@ -17,6 +17,8 @@ let confirmacaoSenhaEditar = document.getElementById("confirmacaoSenhaEditar")
 
 let usuarioAtual = {}
 
+
+//Mostra a mensagem de Bem Vindo + nome do usuario
 function MostrarNomeUsuario() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -24,6 +26,7 @@ function MostrarNomeUsuario() {
 
 }
 
+//Cria o card se houver pet cadastrado naquela conta
 function CriaCardPets() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -106,6 +109,7 @@ function Perfil() {
 
 }
 
+//Cria a lista de nomes que aparece no perfil
 function CriaListaNomesPets(user) {
   
   let listaNomes = []
@@ -123,20 +127,17 @@ function CriaListaNomesPets(user) {
 // Vai para a página de edição do Hardware
 function EditarDispositivo() {}
 
-
-// Volta p/ página anterior
-function Voltar() {}
-
-//Volta para Homepage e zera usuarioAtual
+//Volta para index e zera usuarioAtual
 function Sair() {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   petAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   ZeraUsuarioAtual(usuarioAtual)
   petAtual = {}
   AtualizaPetAtual(petAtual)
-  window.location.href = "homepage.html"
+  window.location.href = "index.html"
 }
 
+//Atualiza informações do petAtual no armazenamento
 function AtualizaPetAtual(pet) {
 
   petAtual = JSON.parse(localStorage.getItem("petAtual"));
@@ -145,7 +146,7 @@ function AtualizaPetAtual(pet) {
 
 }
 
-
+//Declara usuario atual {}
 function ZeraUsuarioAtual(user) {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   if(user == null) {
@@ -158,7 +159,7 @@ function ZeraUsuarioAtual(user) {
 
 }
 
-
+//Mostra informações automaticamente no input de Editar
 function MostraInfoNoInputPerfil() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -182,7 +183,6 @@ function SalvarPerfil() {
   
 }
 
-
 // Verificação se o usuário preencheu todos os inputs ao apertar "Salvar",  retorna true se estiver VAZIO
 function VerificaInputEditarVazio() {
 
@@ -192,7 +192,6 @@ function VerificaInputEditarVazio() {
   } else { return false }
 
 }
-
 
 //Verifica se o email já foi cadastrado no armazenamento local
 function EmailJaExiste(usuarioAtual) {
@@ -211,10 +210,9 @@ function EmailJaExiste(usuarioAtual) {
 
 }
 
-
-//Verifica se email tem "@" e se tem ".com"
+//Verifica se email tem @, ".", e se tem conteudo antes e depois do arroba
 function ValidaEmail(email) {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+ if (/\S+@\S+\.\S+/.test(email)) {
     return (true)
   }
   alert("Endereço de email inválido!")
@@ -240,7 +238,7 @@ function EditaUsuario(atual) {
 }
 
 
-//Deleta a conta do usuário que está logado e retorna para a Home page
+//Deleta a conta do usuário que está logado e retorna para a Index
 function DeletaConta() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -256,7 +254,7 @@ function DeletaConta() {
 
     alert("Sua conta foi excluída com sucesso!")
 
-    window.location.href="homepage.html"
+    window.location.href="index.html"
   }
 
 }
@@ -276,6 +274,7 @@ function AtualizaUsuarios(user) {
 
 }
 
+//Atualiza infos do usuarioAtual no armazenamento
 function AtualizaUsuarioAtual(atual) {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   usuarioAtual = atual
@@ -298,7 +297,6 @@ function AtualizaSenha(usuarioAtual) {
 
 }
 
-
 // Verificação se o usuário preencheu todos os inputs ao apertar "Salvar", retorna true se estiver VAZIO
 function InputSenhaVazio() {
 
@@ -309,7 +307,7 @@ function InputSenhaVazio() {
   return false
 }
 
-
+// Verifica se duas strings são iguais
 function SaoIguais(senhaInput, senhaReal){
 
   if (senhaInput != senhaReal){      
