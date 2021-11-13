@@ -3,7 +3,7 @@
 body{
   margin: 0 0;
   background-color: #9D3BF2;
-  background-image: url(imagens/fundo1920por1080.jpg) ;
+  background-image: url(imagens/fundofrase.jpg) ;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -12,7 +12,7 @@ body{
   font-family: 'Montserrat', sans-serif;  
 }
 
-.logo {
+.logoLogin {
   margin: 0 auto;
   width: 100%;
 }
@@ -27,7 +27,8 @@ body{
   padding-bottom: 40px;
   margin-top: 1%;
   margin-bottom: 10%;
-  width: 20%;
+  width: 25%;
+  min-width: 200px;
   font-size: 18px;
   border-radius: 15px;
 }

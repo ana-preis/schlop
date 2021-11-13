@@ -55,10 +55,14 @@ function VerificaEArmazena() {
 
   if(!SaoIguais(senhaCadastro.value, senhaConfirmaCadastro.value)) {
     alert("Você digitou senhas diferentes!")
+    document.getElementById("senhaCadastro").style.color = "red"
+    document.getElementById("senhaConfirmaCadastro").style.color = "red"
     return false
   }
   if(!SaoIguais(emailCadastro.value, emailConfirmaCadastro.value)){
     alert("Você digitou emails diferentes!")
+    document.getElementById("emailCadastro").style.color = "red"
+    document.getElementById("emailConfirmaCadastro").style.color = "red"
     return false
   }
 
@@ -88,6 +92,7 @@ function Login(){
 
     console.log(usuarioAtual)
     if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
+      document.getElementById("senhaLogin").style.color = "red"
       alert("Senha incorreta!")
       return
 
@@ -111,6 +116,7 @@ function EmailLoginExiste() {
         }
     }
     alert ("Email não cadastrado")
+    document.getElementById("emailLogin").style.color = "red"
     return false
 
 }
