@@ -243,10 +243,16 @@ function DeletaConta() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   usuarios = JSON.parse(localStorage.getItem("usuarios"));
-  console.log(indiceUsuarioAtual)
 
   if(confirm("Tem certeza que deseja deletar sua conta?")) {
     
+    for(i = 0; i < usuarios.length; i++) {
+      if(usuarios[i].email == usuarioAtual.email){
+        usuarios.splice(i, 1)
+        break
+      }
+    }
+
     usuarioAtual = {}
 
     AtualizaUsuarioAtual(usuarioAtual)

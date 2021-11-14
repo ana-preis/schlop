@@ -10,7 +10,6 @@ let emailConfirmaCadastro = document.getElementById("emailConfirmaCadastro")
 let senhaCadastro = document.getElementById("senhaCadastro")
 let senhaConfirmaCadastro = document.getElementById("senhaConfirmaCadastro")
 
-let email = ""
 let usuarios = []
 let usuario = {}
 
@@ -27,51 +26,47 @@ function Usuario(parametroNome, parametroEmail, parametroData, parametroSenha, p
 //Novo Cadastro
 function CadastroUsuario(){
 
-    usuarios = JSON.parse(localStorage.getItem("usuarios"));
-    document.getElementById("emailCadastro").style.color = "black"
-    document.getElementById("emailConfirmaCadastro").style.color = "black"
-    document.getElementById("senhaCadastro").style.color = "black"
-    document.getElementById("senhaConfirmaCadastro").style.color = "black"
+  usuarios = JSON.parse(localStorage.getItem("usuarios"));
+  document.getElementById("emailCadastro").style.color = "black"
+  document.getElementById("emailConfirmaCadastro").style.color = "black"
+  document.getElementById("senhaCadastro").style.color = "black"
+  document.getElementById("senhaConfirmaCadastro").style.color = "black"
 
+  if (usuarios == null){
 
-    if (usuarios == null){
+    usuarios = []
 
-      usuarios = []
+    if(!Verificado()) { return }
+    Armazena()
 
-      if(!VerificaEArmazena()) {
-        return
-      }
+  } else {
 
-    } else {
+    if(!VerificaEmailExiste()) { return }
 
-      if(!VerificaEArmazena()) {
-        return
-      }
+    if(!Verificado()) { return }
+    Armazena()
 
-    }
+  }
 
-    alert("Cadastro realizado com sucesso!")
+  alert("Cadastro realizado com sucesso!")
 
-    window.location.href="index.html"
-
+  window.location.href="index.html"
+ 
 }
 
-// Verificalções de input de cadastro e armazenamento
-function VerificaEArmazena() {
+//Verificalções de input de cadastro
+function Verificado() {
 
-  if(VerificaInputCadastrarVazio()) { return }
+  let emailValido = /\S+@\S+\.\S+/.test(emailCadastro.value)
 
-  if(!ValidaEmail(emailCadastro.value)) { 
+  if(VerificaInputCadastrarVazio()) { return false }
+  
+  if (!emailValido) {
+    alert("Endereço de email inválido!")
     document.getElementById("emailCadastro").style.color = "red"
-    return
-   }
-
-  if(!SaoIguais(senhaCadastro.value, senhaConfirmaCadastro.value)) {
-    alert("Você digitou senhas diferentes!")
-    document.getElementById("senhaCadastro").style.color = "red"
-    document.getElementById("senhaConfirmaCadastro").style.color = "red"
     return false
   }
+
   if(!SaoIguais(emailCadastro.value, emailConfirmaCadastro.value)){
     alert("Você digitou emails diferentes!")
     document.getElementById("emailCadastro").style.color = "red"
@@ -79,38 +74,89 @@ function VerificaEArmazena() {
     return false
   }
 
-  usuario = new Usuario(nomeCadastro.value, emailCadastro.value, dataCadastro.value, senhaCadastro.value)
-
-  usuarios.push(usuario)
-
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+  if(!SaoIguais(senhaCadastro.value, senhaConfirmaCadastro.value)) {
+    alert("Você digitou senhas diferentes!")
+    document.getElementById("senhaCadastro").style.color = "red"
+    document.getElementById("senhaConfirmaCadastro").style.color = "red"
+    return false
+  }
 
   return true
 
 }
 
+function VerificaEmailExiste() {
+  console.log("verficando email")
+
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+
+  for (i = 0; i < usuarios.length; i++) {
+
+    if(emailCadastro.value == usuarios[i].email){
+      alert("Este email já está cadastrado!")
+      document.getElementById("emailCadastro").style.color = "red"
+      return false
+    }
+
+  }  
+
+  return true
+
+}
+
+// Armazenamento
+function Armazena() {  
+  
+  usuario = new Usuario(nomeCadastro.value, emailCadastro.value, dataCadastro.value, senhaCadastro.value)
+  
+  usuarios.push(usuario)
+  
+  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+  
+  return true
+  
+}
+
+//Verifica se o usuario deixou input em branco e mostra alert
+function VerificaInputCadastrarVazio() {
+
+  if (nomeCadastro.value == "" || dataCadastro.value == "" || emailCadastro.value == "" || emailConfirmaCadastro.value == "" || senhaCadastro.value == "" || senhaConfirmaCadastro.value == "") {
+    alert("Você deixou algum campo vazio!")
+    return true
+  } else { return false }
+
+}
+
+//Verifica se email ja ta cadastrado tem @, ".", e se tem conteudo antes e depois do arroba
+function ValidaEmail() {
+  
+
+}
+
+
 //Entra no sistema e cria usuarioAtual
 function Login(){
 
-    usuarios = JSON.parse(localStorage.getItem("usuarios"))
-    
-    if(!EmailLoginExiste()){
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+  
+  if(!EmailLoginExiste()){
 
-        return
-
-    } else {
-        usuarioAtual = EmailLoginExiste()
-        AtualizaUsuarioAtual(usuarioAtual)
-    }
-
-    console.log(usuarioAtual)
-    if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
-      document.getElementById("senhaLogin").style.color = "red"
-      alert("Senha incorreta!")
       return
 
-    }
-    window.location.href="poslogin.html"
+  } else {
+      usuarioAtual = EmailLoginExiste()
+      AtualizaUsuarioAtual(usuarioAtual)
+  }
+
+  console.log(usuarioAtual)
+  if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
+    document.getElementById("senhaLogin").style.color = "red"
+    alert("Senha incorreta!")
+    return
+
+  }
+  window.location.href="poslogin.html"
 
 }
 
@@ -143,23 +189,4 @@ function SaoIguais(senhaInput, senhaReal){
       return false
     }
     return true
-}
-
-//Verifica se o usuario deixou input em branco e mostra alert
-function VerificaInputCadastrarVazio() {
-
-  if (nomeCadastro.value == "" || dataCadastro.value == "" || emailCadastro.value == "" || emailConfirmaCadastro.value == "" || senhaCadastro.value == "" || senhaConfirmaCadastro.value == "") {
-    alert("Você deixou algum campo vazio!")
-    return true
-  } else { return false }
-
-}
-
-//Verifica se email tem @, ".", e se tem conteudo antes e depois do arroba
-function ValidaEmail(email) {
-  if (/\S+@\S+\.\S+/.test(email)) {
-     return (true)
-   }
-   alert("Endereço de email inválido!")
-   return (false)
 }

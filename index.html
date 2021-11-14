@@ -36,7 +36,7 @@
       
       <div class="center">
         <button onclick="Login()" class="btn-grande btn-rosa">Entrar</button><br><br>
-        <button onclick="" class="esqueceu">Esqueceu sua senha?</button><br>
+        <button onclick="location.href='esqueciSenha.html'" class="esqueceu">Esqueceu sua senha?</button><br>
 
         <h5 class="h5-top">Ainda não é cadastrado?</h5>
         <button onclick="location.href='cadastro.html'" class="btn-medio btn-rosa">Cadastre-se</button><br>
@@ -45,13 +45,17 @@
     </div>
 
     <div class="footer-bottom">
-        <label> Projeto desenvolvido por estudantes da 1ª fase do cuso técnico de Desenvolvimetno de Sistemas/SESI-SENAI </label> 
+      <label> SCHLOP - Sistema Calculador de Hidratação Líquida Obtida por Pets </label><br>
+      <label> Projeto desenvolvido por estudantes da 1ª fase do cuso técnico de Desenvolvimetno de Sistemas/SESI-SENAI </label> 
     </div>     
 
   </body>
 
   <script src="script_login.js"></script>
   <script src="script.js"></script>
+  <script>
+    document.getElementById("emailCadastro").style.color = "black"
+  </script>
 
 
 </html>
