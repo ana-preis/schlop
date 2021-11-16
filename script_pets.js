@@ -8,6 +8,7 @@ let condicaoPetEditar = document.getElementById("condicaoPetEditar")
 let pesquisarPet = document.getElementById("pesquisarPet")
 let mensagemPesquisa = document.getElementById("mensagemPesquisa")
 
+
 let pets = []
 let pet = {}
 
@@ -268,9 +269,21 @@ function MostraInfoNoInputPets() {
 
 }
 
+//Coloca o nome do PetAtual no h1
 function MostraNomePet() {
 
   petAtual = JSON.parse(localStorage.getItem("petAtual"));
   nomePet.innerHTML = petAtual.nome
+
+}
+
+//Busca infos do Pet Atual e mostra no relatório
+function MostraInfosRelatorio() {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+
+  document.getElementById("pesoRelatorio").innerHTML = petAtual.peso + "Kg"
+  document.getElementById("racaRelatorio").innerHTML = petAtual.raca
+  document.getElementById("condicaoRelatorio").innerHTML = petAtual.condicao
 
 }

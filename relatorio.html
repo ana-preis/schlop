@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_sistema.css">
+    <link rel="icon" href="imagens/coleira.jpg" type="image/icon type">
+
+    <title>Schlop - Relatório</title>    
+  </head>
+
+  <body>
+
+    <div class="bg-container">
+      <div class="header">
+          <a onclick="location.href='poslogin.html'">
+            <img class="logo" src="imagens/vetorizado_logo(3).png">
+          </a>
+          <button class="sair verde" onclick="Sair()">Sair</button>
+      </div>    
+
+      <div class="nav">
+        <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+        <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+      </div>
+
+      <div class="container">
+
+        <h1 id="nomePet"></h1>
+
+        <div class="row" id="cardRow">
+          <div class="card-relatorio width-25">
+              <h3>Peso:</h3><h3 id="pesoRelatorio"></h3>
+          </div>
+          <div class="card-relatorio width-25">
+            <h3>Raça:</h3><h3 id="racaRelatorio"></h3>
+          </div> 
+          <div class="card-relatorio width-25">
+            <h3>Condição médica:</h3><h3 id="condicaoRelatorio"></h3>
+          </div>
+          <div class="card-relatorio width-50">
+            <h3>Quantidade de idas ao bebedouro:</h3><h3 id="quantidadeIdas"></h3>
+          </div>
+          <div class="card-relatorio width-50">
+            <h3>Litros bebidos:</h3><h3 id="litros"></h3>
+          </div>
+          <div class="card-relatorio">
+            <h3>Gráfico - Quantidade de idas ao bebedouro:</h3><h3 id=""></h3>
+          </div>
+          <div class="card-relatorio">
+            <h3>Gráfico -  Litros bebidos</h3><h3 id=""></h3>
+          </div>
+        </div>
+
+        <div class="btn-last">
+          <button onclick="history.go(-1);">Voltar</button>
+        </div>
+
+      </div>
+
+    </div>      
+      
+  </body>
+
+  <script src="script_login.js"></script>
+  <script src="script.js"></script>
+  <script src="script_pets.js"></script>
+  <script>
+    MostraNomePet()
+    MostraInfosRelatorio()  
+  </script>
+
+
+</html>

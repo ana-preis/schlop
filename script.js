@@ -44,14 +44,20 @@ function CriaCardPets() {
     let linkPet = document.createElement("a") 
     let nomePet = document.createElement("h3")
     let pesoPet = document.createElement("h3")
+    let racaPet = document.createElement("h3")
+    let condicaoPet = document.createElement("h3")
 
     nomePet.textContent = pets[i].nome
     pesoPet.textContent = pets[i].peso + "Kg"
+    racaPet.textContent = pets[i].raca
+    condicaoPet.textContent = pets[i].condicao
 
     document.getElementById("cardRow").appendChild(cardPet)
     cardPet.appendChild(linkPet)
     linkPet.appendChild(nomePet)
     linkPet.appendChild(pesoPet)
+    linkPet.appendChild(racaPet)
+    linkPet.appendChild(condicaoPet)
 
     cardPet.classList.add("card")
 
@@ -60,7 +66,7 @@ function CriaCardPets() {
 
     cardPet.addEventListener("click", e => {
       CriaPetAtual(cardPet.id)
-      window.location.href = "editarPet.html"   //DIRECIONA P/ DETALHE PET -- ARRUMAR
+      window.location.href = "relatorio.html"   
     })
 
   }
