@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schlop - Cadastro Tag</title>
+    <title>Schlop - Dispositivos</title>
     <link rel="stylesheet" href="style_sistema.css">
     <link rel="icon" href="imagens/coleira.jpg" type="image/icon type">
 
@@ -27,18 +27,22 @@
 
       <div class="container">
 
-        <h1>Cadastro do Pet</h1>
-        <h1 id="nomePet"></h1>
+        <h1>Editar Dispositivos</h1>
 
         <div class="content">
 
-          <label>Aproxime a tag da coleira do pet no sensor do bebedouro:</label><br>
-          <input><br>
-          
+          <div class="row" id="cardRow">
+            <div id="bebedouros" class="bebedouros">
+
+            </div>
+          </div>
         </div>
         
         <div class="btn-last">
-          <button onclick="" class="btn-editar">Cadastrar Tag</button>
+          <button onclick="window.location.href='addPet.html'" class="btn-editar">
+            <img src="imagens/plus.png" class="icone"> 
+            Adicionar Novo Bebedouro
+          </button>
           <button onclick="history.go(-1);">Voltar</button>
         </div>
 
@@ -50,8 +54,6 @@
   <script src="script_login.js"></script>
   <script src="script_pets.js"></script>
   <script src="script.js"></script>
-  <script>
-    MostraNomePet()
-  </script>
+  <script> CriaListaBebedouros() </script>
 
 </html>

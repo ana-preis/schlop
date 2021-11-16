@@ -327,3 +327,32 @@ function SaoIguais(senhaInput, senhaReal){
   }
   return true
 }
+
+
+function CriaListaBebedouros() {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  let dispositivos = usuarioAtual.dispositivos
+
+  if (dispositivos == null) { return }
+
+  for (i = 0; i < dispositivos.length; i++) {
+
+    let linhaDispositivo = document.createElement("div")
+    let dispositivo = document.createElement("label")
+    let excluirDispositivo = document.createElement("button")
+
+    dispositivo.textContent = dispositivos[i]      //Considerando que dispositivos é array
+    excluirDispositivo.textContent = "Excluir"
+
+    document.getElementById("bebedouros").appendChild(linhaDispositivo)
+
+    linhaDispositivo.appendChild(dispositivo)
+    linhaDispositivo.appendChild(excluirDispositivo)
+
+    linhaDispositivo.classList.add("")
+    excluirDispositivo.class.add("")
+
+  }
+
+}
