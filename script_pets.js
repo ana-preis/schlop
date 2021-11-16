@@ -1,3 +1,5 @@
+let nomePet = document.getElementById("nomePet")
+
 let nomePetEditar = document.getElementById("nomePetEditar")
 let pesoPetEditar = document.getElementById("pesoPetEditar")
 let racaPetEditar = document.getElementById("racaPetEditar")
@@ -263,5 +265,12 @@ function MostraInfoNoInputPets() {
   pesoPetEditar.value = petAtual.peso
   racaPetEditar.value = petAtual.raca
   condicaoPetEditar.value = petAtual.condicao
+
+}
+
+function MostraNomePet() {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+  nomePet.innerHTML = petAtual.nome
 
 }
