@@ -114,59 +114,63 @@ function CriaLinhaTabela() {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   var pets = usuarioAtual.pets
 
-  for (i = 0; i < pets.length; i++) {
-    let linhaPet = document.createElement("div")
-    let nomePet = document.createElement("div")
-    let pesoPet = document.createElement("div")
-    let racaPet = document.createElement("div")
-    let condicaoPet = document.createElement("div")
-    let divEditarPet = document.createElement("div")
-    let editarPet = document.createElement("button")
-    let editarIcon = document.createElement("img")
+  if (pets !== undefined) {
 
-    nomeDoPetAtual = pets[i].nome
+    for (i = 0; i < pets.length; i++) {
+      let linhaPet = document.createElement("div")
+      let nomePet = document.createElement("div")
+      let pesoPet = document.createElement("div")
+      let racaPet = document.createElement("div")
+      let condicaoPet = document.createElement("div")
+      let divEditarPet = document.createElement("div")
+      let editarPet = document.createElement("button")
+      let editarIcon = document.createElement("img")
 
-    nomePet.textContent = pets[i].nome
-    pesoPet.textContent = pets[i].peso + "Kg"
-    racaPet.textContent = pets[i].raca
-    condicaoPet.textContent = pets[i].condicao
+      nomeDoPetAtual = pets[i].nome
 
-    document.getElementById("table").appendChild(linhaPet)
-    linhaPet.appendChild(nomePet)
-    linhaPet.appendChild(pesoPet)
-    linhaPet.appendChild(racaPet)
-    linhaPet.appendChild(condicaoPet)
-    linhaPet.appendChild(divEditarPet)
-    divEditarPet.appendChild(editarPet)
-    editarPet.appendChild(editarIcon)
-    
-    linhaPet.classList.add("table-line")
-    nomePet.classList.add("col", "col1")
-    pesoPet.classList.add("col", "col2")
-    racaPet.classList.add("col")
-    condicaoPet.classList.add("col", "col4")
-    divEditarPet.classList.add("coluna-editar")
-    editarIcon.classList.add("icone-editar")
-    editarIcon.src = "imagens/editar.png"
+      nomePet.textContent = pets[i].nome
+      pesoPet.textContent = pets[i].peso + "Kg"
+      racaPet.textContent = pets[i].raca
+      condicaoPet.textContent = pets[i].condicao
+
+      document.getElementById("table").appendChild(linhaPet)
+      linhaPet.appendChild(nomePet)
+      linhaPet.appendChild(pesoPet)
+      linhaPet.appendChild(racaPet)
+      linhaPet.appendChild(condicaoPet)
+      linhaPet.appendChild(divEditarPet)
+      divEditarPet.appendChild(editarPet)
+      editarPet.appendChild(editarIcon)
+      
+      linhaPet.classList.add("table-line")
+      nomePet.classList.add("col", "col1")
+      pesoPet.classList.add("col", "col2")
+      racaPet.classList.add("col")
+      condicaoPet.classList.add("col", "col4")
+      divEditarPet.classList.add("coluna-editar")
+      editarIcon.classList.add("icone-editar")
+      editarIcon.src = "imagens/editar.png"
 
 
-    idNome = i
-    idTable = "table" + [i]
-    
-    nomePet.setAttribute("id", idNome)
-    linhaPet.setAttribute("id", idTable)
+      idNome = i
+      idTable = "table" + [i]
+      
+      nomePet.setAttribute("id", idNome)
+      linhaPet.setAttribute("id", idTable)
 
-    nomePet.addEventListener("click", e => {
-      CriaPetAtual(nomePet.id)
-      window.location.href = "relatorio.html"  
-    })
+      nomePet.addEventListener("click", e => {
+        CriaPetAtual(nomePet.id)
+        window.location.href = "relatorio.html"  
+      })
 
-    editarPet.addEventListener("click", e => {
-      CriaPetAtual(nomePet.id)
-      window.location.href = "editarPet.html"
-    })
+      editarPet.addEventListener("click", e => {
+        CriaPetAtual(nomePet.id)
+        window.location.href = "editarPet.html"
+      })
 
-  }
+    }
+
+  } else { return }
 
 }
 
@@ -290,4 +294,15 @@ function MostraInfosRelatorio() {
   document.getElementById("racaRelatorio").innerHTML = petAtual.raca
   document.getElementById("condicaoRelatorio").innerHTML = petAtual.condicao
 
+}
+
+function BgAbsoluto() {
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  let bgContainer = document.getElementById("bg-container")
+
+  if (usuarioAtual.pets == undefined) {
+    bgContainer.classList.add("absoluto")
+  }
+  
+  return
 }

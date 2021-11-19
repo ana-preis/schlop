@@ -51,6 +51,7 @@ function CadastroUsuario(){
   alert("Cadastro realizado com sucesso!")
 
   window.location.href="index.html"
+
  
 }
 
