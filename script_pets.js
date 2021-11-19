@@ -122,6 +122,7 @@ function CriaLinhaTabela() {
     let condicaoPet = document.createElement("div")
     let divEditarPet = document.createElement("div")
     let editarPet = document.createElement("button")
+    let editarIcon = document.createElement("img")
 
     nomeDoPetAtual = pets[i].nome
 
@@ -129,7 +130,6 @@ function CriaLinhaTabela() {
     pesoPet.textContent = pets[i].peso + "Kg"
     racaPet.textContent = pets[i].raca
     condicaoPet.textContent = pets[i].condicao
-    editarPet.textContent = "Editar"
 
     document.getElementById("table").appendChild(linhaPet)
     linhaPet.appendChild(nomePet)
@@ -138,6 +138,7 @@ function CriaLinhaTabela() {
     linhaPet.appendChild(condicaoPet)
     linhaPet.appendChild(divEditarPet)
     divEditarPet.appendChild(editarPet)
+    editarPet.appendChild(editarIcon)
     
     linhaPet.classList.add("table-line")
     nomePet.classList.add("col", "col1")
@@ -145,6 +146,9 @@ function CriaLinhaTabela() {
     racaPet.classList.add("col")
     condicaoPet.classList.add("col", "col4")
     divEditarPet.classList.add("coluna-editar")
+    editarIcon.classList.add("icone-editar")
+    editarIcon.src = "imagens/editar.png"
+
 
     idNome = i
     idTable = "table" + [i]
@@ -154,7 +158,7 @@ function CriaLinhaTabela() {
 
     nomePet.addEventListener("click", e => {
       CriaPetAtual(nomePet.id)
-      //window.location.href = ""   DIRECIONA P/ DETALHE PET
+      window.location.href = "relatorio.html"  
     })
 
     editarPet.addEventListener("click", e => {

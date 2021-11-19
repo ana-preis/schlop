@@ -38,6 +38,10 @@ input {
   margin-right: 10px;
 }
 
+.icone-editar {
+  width: 30px;
+}
+
 .sair {
   font-size: 18px;
   float: right;
@@ -211,6 +215,10 @@ button.btn-content:hover {
   border: none;
 }
 
+.pesquisarPet:hover {
+  background-color: #c787f8;
+}
+
 .pesquisarPet-input {
   font-size: 18px;
   padding: 5px;
@@ -259,7 +267,7 @@ button.btn-content:hover {
 .coluna-editar button{
   font-size: 18px;
   line-height: 30px;
-  padding: 10px;
+  padding: 10px 25px 10px 25px;
   margin-bottom: 8px;
   background-color: #9D3BF2;
   color: #fff;
