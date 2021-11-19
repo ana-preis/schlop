@@ -95,3 +95,17 @@ input:focus {
   margin-left: 30px;
   text-align: center;
 }
+
+.pass-icon {
+  cursor: pointer;
+  margin-left: -50px;
+  margin-bottom: -20px;
+  opacity: 0.3;
+}
+
+.icon-pass-on {
+  cursor: pointer;
+  margin-left: -50px;
+  margin-bottom: -20px;
+  opacity: 1;
+}

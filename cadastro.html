@@ -33,10 +33,13 @@
         <label>Confirmar e-mail:</label><br>
         <input type="email" id="emailConfirmaCadastro" class="input-G"><br>
         <label>Senha:</label><br>
-        <input type="password" id="senhaCadastro"><br>
+        <input type="password" id="senhaCadastro">
+        <img src="imagens/olho.png" class="pass-icon" onclick="IconeSenha()" id="iconecadastro1">
+        <label id="mensagemSenha"></label><br>
         <label>Confirmar senha:</label><br>
-        <input type="password" id="senhaConfirmaCadastro"><br>
-        
+        <input type="password" id="senhaConfirmaCadastro">
+        <img src="imagens/olho.png" class="pass-icon" onclick="IconeSenha()" id="iconecadastro2"><br>
+
         <button onclick="history.go(-1);" class="btn-rosa">Voltar</button>
         <button onclick= CadastroUsuario() class="btn-rosa btn-center">Cadastre-se!</button>
     

@@ -288,6 +288,7 @@ button.btn-content:hover {
 select{
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;  
+  padding: 5px;
 }
 
 .excluir {

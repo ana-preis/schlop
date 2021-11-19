@@ -74,6 +74,8 @@ function Verificado() {
     return false
   }
 
+  if(!ValidaSenha()) { return false }
+
   if(!SaoIguais(senhaCadastro.value, senhaConfirmaCadastro.value)) {
     alert("Você digitou senhas diferentes!")
     document.getElementById("senhaCadastro").style.color = "red"
@@ -86,8 +88,6 @@ function Verificado() {
 }
 
 function VerificaEmailExiste() {
-  console.log("verficando email")
-
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
 
@@ -189,4 +189,56 @@ function SaoIguais(senhaInput, senhaReal){
       return false
     }
     return true
+}
+
+function IconeSenha() {
+
+  const iconecadastro1 = document.querySelector('#iconecadastro1')
+  const senhaCadastro = document.querySelector('#senhaCadastro')
+
+  iconecadastro1.addEventListener('click', function (e) {
+    const type = senhaCadastro.getAttribute('type') === 'password' ? 'text' : 'password'
+    senhaCadastro.setAttribute('type', type)
+    this.classList.toggle('icon-pass-on')
+
+  })
+
+  const iconecadastro2 = document.querySelector('#iconecadastro2')
+  const senhaConfirmaCadastro = document.querySelector('#senhaConfirmaCadastro')
+
+  iconecadastro2.addEventListener('click', function (e) {
+    const type = senhaConfirmaCadastro.getAttribute('type') === 'password' ? 'text' : 'password'
+    senhaConfirmaCadastro.setAttribute('type', type)
+    this.classList.toggle('icon-pass-on')
+
+  })
+
+}
+
+//6 a 16 caracteres
+function ValidaSenha() {
+
+  var minNumberofChars = 6
+  var maxNumberofChars = 16
+  var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
+  console.log(senhaCadastro.value.length)
+
+  if(senhaCadastro.value.length < minNumberofChars || senhaCadastro.value.length > maxNumberofChars){
+    document.getElementById("senhaCadastro").style.color = "red"
+    var mensagemSenha = document.getElementById("mensagemSenha")
+    mensagemSenha.textContent = "Senha deve ter no mínimo 6 e no máximo 16 caracteres"
+
+      return false
+  }
+  if(!regularExpression.test(senhaCadastro.value)) {
+    alert("regex")
+    document.getElementById("senhaCadastro").style.color = "red"
+    document.getElementById("mensagemSenha").innerHTML = "Senha deve ter no mínimo 6 e no máximo 16 caracteres"
+
+    return false
+  }
+
+  document.getElementById("mensagemSenha").innerHTML = ""
+  return true
+
 }
