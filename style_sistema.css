@@ -331,7 +331,7 @@ button.excluir:hover {
 
 .bebedouros {
   width: 100%;
-  margin: 2%;
+  margin-top: 6%;
   padding: 1%;
-  background-color: #ccc;
+  background-color: rgb(240, 240, 240);
 }

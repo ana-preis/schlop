@@ -33,12 +33,17 @@
         <div class="content">
 
           <h3>Aproxime a tag da coleira do pet no sensor do bebedouro:</h3><br>
-          <input><br>
+          <input id="rfid"><br>
+
+          <div class="bebedouros">
+            <h3>Lista de Tags Cadastradas:</h3>
+            <div></div>
+          </div>
           
         </div>
         
         <div class="btn-last">
-          <button onclick="" class="btn-editar">
+          <button onclick="CadastraTag()" class="btn-editar">
             <img src="imagens/salvar.png" class="icone">
             Cadastrar Tag</button>
           <button onclick="history.go(-1);">

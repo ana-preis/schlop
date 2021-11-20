@@ -8,6 +8,8 @@ let condicaoPetEditar = document.getElementById("condicaoPetEditar")
 let pesquisarPet = document.getElementById("pesquisarPet")
 let mensagemPesquisa = document.getElementById("mensagemPesquisa")
 
+let rdif = document.getElementById("rfid")
+
 
 let pets = []
 let pet = {}
@@ -305,4 +307,31 @@ function BgAbsoluto() {
   }
   
   return
+}
+
+function CadastraTag() {
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+  let listaPets = usuarioAtual.pets
+  let indicePetAtual
+  
+  for(i = 0; i < listaPets.length; i++) {
+    if(listaPets[i].nome == petAtual.nome){
+      indicePetAtual = i
+      break
+    }
+  }
+
+  petAtual.tag = rfid.value
+
+  listaPets[indicePetAtual] = petAtual
+
+  AtualizaPetAtual(petAtual)
+  AtualizaUsuarioAtual(usuarioAtual)
+  AtualizaUsuarios(usuarioAtual)
+
+  alert("Cadastro da Tag realizado com sucesso!")
+
 }
