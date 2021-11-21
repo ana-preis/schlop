@@ -6,7 +6,6 @@ html {
 
 body { 
   width: 100%;
-  height: 100%;
   font-family: 'Montserrat', sans-serif;  
   background:#fff ;
   overflow-x: hidden;
@@ -27,6 +26,7 @@ input {
   font-family: 'Montserrat', sans-serif;  
 }
 
+
 .header {
   height: 20%;
   background-color: #fff;
@@ -45,6 +45,22 @@ input {
 
 .icone-editar {
   width: 30px;
+}
+
+.usuario {
+  float: right;
+}
+
+.btn-usuario {
+  border: none;
+  background: none;
+  margin: 0;
+  color: #9D3BF2;
+}
+
+.btn-usuario:hover {
+  text-decoration: underline;
+  color: #7004cf;
 }
 
 .sair {
@@ -119,7 +135,7 @@ input {
   text-align: center;
 }
 
-h1 {
+.container h1 {
   margin-top: 50px;
   text-align: center;
 }

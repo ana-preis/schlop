@@ -11,12 +11,17 @@
   </head>
   <body>
 
-    <div class="bg-container absoluto">
+    <div class="bg-container">
       <div class="header">
         <a onclick="location.href='poslogin.html'">
           <img class="logo" src="imagens/vetorizado_logo(3).png">
         </a>
         <button class="sair verde" onclick="Sair()">Sair</button>
+        <div class="usuario">
+          <button class="btn-usuario" onclick="location.href='poslogin.html'">
+            <h2 id="usuarioTopo"></h2>
+          </button>
+        </div>
       </div>
 
       <div class="nav">
@@ -69,6 +74,7 @@
   <script src="script_pets.js"></script>
   <script>
     Perfil()
+    MostrarUsuarioHeader()
   </script>
 
 

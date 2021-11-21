@@ -9,7 +9,6 @@ let dataNascimentoPerfil = document.getElementById("dataNascimentoPerfil")
 let dispositivoPerfil = document.getElementById("dispositivoPerfil")
 let petsPerfil = document.getElementById("petsPerfil")
 
-
 //Inputs tela editarPerfil
 let nomeEditar = document.getElementById("nomeEditar")
 let emailEditar = document.getElementById("emailEditar")
@@ -22,6 +21,13 @@ let confirmacaoSenhaEditar = document.getElementById("confirmacaoSenhaEditar")
 
 let usuarioAtual = {}
 
+
+function MostrarUsuarioHeader() {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  document.getElementById("usuarioTopo").innerHTML = usuarioAtual.nome
+
+}
 
 //Mostra a mensagem de Bem Vindo + nome do usuario
 function MostrarNomeUsuario() {
