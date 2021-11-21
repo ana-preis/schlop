@@ -2,7 +2,7 @@
 let emailLogin = document.getElementById("emailLogin")
 let senhaLogin = document.getElementById("senhaLogin")
 
-// Inputs tela de cadastro alterar!!
+// Inputs tela de cadastro
 let nomeCadastro = document.getElementById("nomeCadastro")
 let dataCadastro = document.getElementById("dataCadastro")
 let emailCadastro = document.getElementById("emailCadastro")
@@ -55,7 +55,8 @@ function CadastroUsuario(){
  
 }
 
-//Verificalções de input de cadastro
+
+//Verificações de input de cadastro
 function Verificado() {
 
   let emailValido = /\S+@\S+\.\S+/.test(emailCadastro.value)
@@ -88,6 +89,29 @@ function Verificado() {
 
 }
 
+
+//Verifica se o usuario deixou input em branco e mostra alert
+function VerificaInputCadastrarVazio() {
+
+  if (nomeCadastro.value == "" || dataCadastro.value == "" || emailCadastro.value == "" || emailConfirmaCadastro.value == "" || senhaCadastro.value == "" || senhaConfirmaCadastro.value == "") {
+    alert("Você deixou algum campo vazio!")
+    return true
+  } else { return false }
+
+}
+
+
+//Verifica se duas strings são iguais
+function SaoIguais(senhaInput, senhaReal){
+
+  if (senhaInput != senhaReal){      
+    return false
+  }
+  return true
+}
+
+
+//Verifica se email do input já foi cadastrado
 function VerificaEmailExiste() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -106,90 +130,8 @@ function VerificaEmailExiste() {
 
 }
 
-// Armazenamento
-function Armazena() {  
-  
-  usuario = new Usuario(nomeCadastro.value, emailCadastro.value, dataCadastro.value, senhaCadastro.value)
-  
-  usuarios.push(usuario)
-  
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
-  
-  return true
-  
-}
 
-//Verifica se o usuario deixou input em branco e mostra alert
-function VerificaInputCadastrarVazio() {
-
-  if (nomeCadastro.value == "" || dataCadastro.value == "" || emailCadastro.value == "" || emailConfirmaCadastro.value == "" || senhaCadastro.value == "" || senhaConfirmaCadastro.value == "") {
-    alert("Você deixou algum campo vazio!")
-    return true
-  } else { return false }
-
-}
-
-//Verifica se email ja ta cadastrado tem @, ".", e se tem conteudo antes e depois do arroba
-function ValidaEmail() {
-  
-
-}
-
-
-//Entra no sistema e cria usuarioAtual
-function Login(){
-
-  usuarios = JSON.parse(localStorage.getItem("usuarios"))
-  
-  if(!EmailLoginExiste()){
-
-      return
-
-  } else {
-      usuarioAtual = EmailLoginExiste()
-      AtualizaUsuarioAtual(usuarioAtual)
-  }
-
-  if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
-    document.getElementById("senhaLogin").style.color = "red"
-    alert("Senha incorreta!")
-    return
-
-  }
-  window.location.href="poslogin.html"
-
-}
-
-//Verifica se email já foi armazenado
-function EmailLoginExiste() {
-
-    usuarios = JSON.parse(localStorage.getItem("usuarios"))
-
-    for (i = 0; i < usuarios.length; i++) {
-    
-        if(emailLogin.value.toLowerCase() == usuarios[i].email){
-
-            usuarioAtual = usuarios[i]
-
-        return usuarioAtual
-      
-        }
-    }
-    alert ("Email não cadastrado")
-    document.getElementById("emailLogin").style.color = "red"
-    return false
-
-}
-
-//Verifica se duas strings são iguais
-function SaoIguais(senhaInput, senhaReal){
-
-    if (senhaInput != senhaReal){      
-      return false
-    }
-    return true
-}
-
+//Se clica 2x no ícone da senha, troca o type para text 
 function IconeSenha() {
 
   const iconecadastro1 = document.querySelector('#iconecadastro1')
@@ -213,6 +155,7 @@ function IconeSenha() {
   })
 
 }
+
 
 //6 a 16 caracteres
 function ValidaSenha() {
@@ -238,5 +181,68 @@ function ValidaSenha() {
 
   document.getElementById("mensagemSenha").innerHTML = ""
   return true
+
+}
+
+
+// Armazenamento novo usuário
+function Armazena() {  
+  
+  usuario = new Usuario(nomeCadastro.value, emailCadastro.value, dataCadastro.value, senhaCadastro.value)
+  
+  usuarios.push(usuario)
+  
+  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+  
+  return true
+  
+}
+
+
+
+
+//Verifica se email já foi armazenado na tela de login
+function EmailLoginExiste() {
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+
+  for (i = 0; i < usuarios.length; i++) {
+  
+      if(emailLogin.value.toLowerCase() == usuarios[i].email){
+
+          usuarioAtual = usuarios[i]
+
+      return usuarioAtual
+    
+      }
+  }
+  alert ("Email não cadastrado")
+  document.getElementById("emailLogin").style.color = "red"
+  return false
+
+}
+
+
+//Entra no sistema e cria usuarioAtual
+function Login(){
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+  
+  if(!EmailLoginExiste()){
+
+      return
+
+  } else {
+      usuarioAtual = EmailLoginExiste()
+      AtualizaUsuarioAtual(usuarioAtual)
+  }
+
+  if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
+    document.getElementById("senhaLogin").style.color = "red"
+    alert("Senha incorreta!")
+    return
+
+  }
+  window.location.href="poslogin.html"
 
 }

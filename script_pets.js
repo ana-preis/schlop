@@ -1,15 +1,18 @@
+//H1 petAtual
 let nomePet = document.getElementById("nomePet")
 
+//Input tela editarPets
 let nomePetEditar = document.getElementById("nomePetEditar")
 let pesoPetEditar = document.getElementById("pesoPetEditar")
 let racaPetEditar = document.getElementById("racaPetEditar")
 let condicaoPetEditar = document.getElementById("condicaoPetEditar")
 
+//Input tela pets
 let pesquisarPet = document.getElementById("pesquisarPet")
 let mensagemPesquisa = document.getElementById("mensagemPesquisa")
 
+//Input tela cadastroTag
 let rdif = document.getElementById("rfid")
-
 
 let pets = []
 let pet = {}
@@ -82,16 +85,6 @@ function CadastroPet() {
 
 }
 
-//Verifica se usuário deixou input vazio ao adicionar Pet
-function InputVazioPet() {
-
-  if(nomePetEditar.value == "" || pesoPetEditar.value == "" || racaPetEditar.value == ""){
-    alert("Você deixou algum campo vazio!")
-    return true
-  }
-  return false
-
-}
 
 //Armazenamento local do Pet no Objeto usuarioAtual
 function ArmazenaPetUsuarioAtual(user) {
@@ -109,6 +102,19 @@ function ArmazenaPetUsuarioAtual(user) {
   localStorage.setItem("usuarioAtual", JSON.stringify(user))
 
 }
+
+
+//Verifica se usuário deixou input vazio ao adicionar Pet
+function InputVazioPet() {
+
+  if(nomePetEditar.value == "" || pesoPetEditar.value == "" || racaPetEditar.value == ""){
+    alert("Você deixou algum campo vazio!")
+    return true
+  }
+  return false
+
+}
+
 
 //Cria DIVS (linhas) da tabela de Pets de acordo com a quantidade de Pets
 function CriaLinhaTabela() {
@@ -176,7 +182,8 @@ function CriaLinhaTabela() {
 
 }
 
-//Armazena informações do pet clicado na página pets
+
+//Armazena informações do pet clicado da pagina pets (EventListener)
 function CriaPetAtual(id) {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -196,7 +203,30 @@ function CriaPetAtual(id) {
 
 }
 
-//Atualiza valores novos na chave petAtual, usuarioAtual e usuarios
+
+//Preenche os inputs com informações do Pet clicado
+function MostraInfoNoInputPets() {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+
+  nomePetEditar.value = petAtual.nome
+  pesoPetEditar.value = petAtual.peso
+  racaPetEditar.value = petAtual.raca
+  condicaoPetEditar.value = petAtual.condicao
+
+}
+
+
+//Coloca o nome do PetAtual no h1
+function MostraNomePet() {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+  nomePet.innerHTML = petAtual.nome
+
+}
+
+
+//Atualiza valores novos do petAtual, usuarioAtual e usuarios
 function EditaPet() {
   
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -210,6 +240,7 @@ function EditaPet() {
       indicePetAtual = i
       break
     }
+
   }
 
   if(InputVazioPet()) { return }
@@ -231,7 +262,18 @@ function EditaPet() {
 
 }
 
-//Exclui cadastro do PetAtual e atualiza pet Atual
+
+//Atualização JSON de infos do petAtual
+function AtualizaPetAtual(pet) {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+  petAtual = pet
+  localStorage.setItem("petAtual", JSON.stringify(petAtual))
+
+}
+
+
+//Exclui cadastro do PetAtual e atualiza pet Atual, usuarioAtual e usuario
 function ExcluirCadastroPet() {
   
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -259,35 +301,7 @@ function ExcluirCadastroPet() {
 }
 
 
-function AtualizaPetAtual(pet) {
-
-  petAtual = JSON.parse(localStorage.getItem("petAtual"));
-  petAtual = pet
-  localStorage.setItem("petAtual", JSON.stringify(petAtual))
-
-}
-
-//Preenche os inputs com informações do Pet clicado
-function MostraInfoNoInputPets() {
-
-  petAtual = JSON.parse(localStorage.getItem("petAtual"));
-
-  nomePetEditar.value = petAtual.nome
-  pesoPetEditar.value = petAtual.peso
-  racaPetEditar.value = petAtual.raca
-  condicaoPetEditar.value = petAtual.condicao
-
-}
-
-//Coloca o nome do PetAtual no h1
-function MostraNomePet() {
-
-  petAtual = JSON.parse(localStorage.getItem("petAtual"));
-  nomePet.innerHTML = petAtual.nome
-
-}
-
-//Busca infos do Pet Atual e mostra no relatório
+//Busca infos do Pet Atual e mostra na página de relatório
 function MostraInfosRelatorio() {
 
   petAtual = JSON.parse(localStorage.getItem("petAtual"));
@@ -298,6 +312,7 @@ function MostraInfosRelatorio() {
 
 }
 
+//Inclui classe absoluto se tiver um ou mais pets cadastrado na pg pets
 function BgAbsoluto() {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   let bgContainer = document.getElementById("bg-container")
@@ -309,6 +324,8 @@ function BgAbsoluto() {
   return
 }
 
+
+//Cadastro da Tag RFID e atualização petAtual, usuarioAtual e usuarios
 function CadastraTag() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -338,6 +355,8 @@ function CadastraTag() {
 
 }
 
+
+//Lista Tags cadastradas abaixo do input
 function CriaListaTags() {
 
   petAtual = JSON.parse(localStorage.getItem("petAtual"));
@@ -369,6 +388,8 @@ function CriaListaTags() {
 
 }
 
+
+//Exclui tag selecionada e atualiza petAtual, usuarioAtual, usuarios
 function ExcluirTag() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -399,5 +420,4 @@ function ExcluirTag() {
 
   }
   
-
 }

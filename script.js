@@ -1,16 +1,21 @@
+//Tela poslogin
 let bemVindo = document.getElementById("bemVindo")
 let cardAdd = document.getElementById("cardAdd")
 
+//Label tela perfil
 let nomePerfil = document.getElementById("nomePerfil")
 let emailPerfil = document.getElementById("emailPerfil")
 let dataNascimentoPerfil = document.getElementById("dataNascimentoPerfil")
 let dispositivoPerfil = document.getElementById("dispositivoPerfil")
 let petsPerfil = document.getElementById("petsPerfil")
 
+
+//Inputs tela editarPerfil
 let nomeEditar = document.getElementById("nomeEditar")
 let emailEditar = document.getElementById("emailEditar")
 let dataNascimentoEditar = document.getElementById("dataNascimentoEditar")
 
+//Inputs tela editarSenha
 let senhaAtualEditar = document.getElementById("senhaAtualEditar")
 let senhaNovaEditar = document.getElementById("senhaNovaEditar")
 let confirmacaoSenhaEditar = document.getElementById("confirmacaoSenhaEditar")
@@ -115,7 +120,6 @@ function Perfil() {
   for(i = 0; i < usuarioAtual.dispositivos.length; i++) {
     listaNomeDispositivos.push(usuarioAtual.dispositivos[i][0])
   }
-
   dispositivoPerfil.innerHTML = listaNomeDispositivos.join(" , ")
 
 }
@@ -133,20 +137,6 @@ function CriaListaNomesPets(user) {
   return listaNomes.join(" , ")
 }
 
-//Formatação data: a.split("-").reverse().join("-")
-
-// Vai para a página de edição do Hardware
-function EditarDispositivo() {}
-
-//Volta para index e zera usuarioAtual
-function Sair() {
-  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  petAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  ZeraUsuarioAtual(usuarioAtual)
-  petAtual = {}
-  AtualizaPetAtual(petAtual)
-  window.location.href = "index.html"
-}
 
 //Atualiza informações do petAtual no armazenamento
 function AtualizaPetAtual(pet) {
@@ -157,18 +147,6 @@ function AtualizaPetAtual(pet) {
 
 }
 
-//Declara usuario atual {}
-function ZeraUsuarioAtual(user) {
-  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  if(user == null) {
-    usuarioAtual = {}
-    localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
-  } else {
-    usuarioAtual = {}
-    localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
-  }
-
-}
 
 //Mostra informações automaticamente no input de Editar
 function MostraInfoNoInputPerfil() {
@@ -179,6 +157,7 @@ function MostraInfoNoInputPerfil() {
   dataNascimentoEditar.value = usuarioAtual.dataNascimento
 
 }
+
 
 // Salva as novas informações do perfil do usuário
 function SalvarPerfil() {
@@ -194,6 +173,7 @@ function SalvarPerfil() {
   
 }
 
+
 // Verificação se o usuário preencheu todos os inputs ao apertar "Salvar",  retorna true se estiver VAZIO
 function VerificaInputEditarVazio() {
 
@@ -203,6 +183,7 @@ function VerificaInputEditarVazio() {
   } else { return false }
 
 }
+
 
 //Verifica se o email já foi cadastrado no armazenamento local
 function EmailJaExiste(usuarioAtual) {
@@ -245,7 +226,69 @@ function EditaUsuario(atual) {
 
   return alert("Cadastro atualizado com sucesso!")
 
+}
 
+
+//Atualiza lista de usuarios no Armazenamento Local
+function AtualizaUsuarios(user) {
+  usuarios = JSON.parse(localStorage.getItem("usuarios"));
+
+  for(i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].email == user.email) {
+      usuarios[i] = user
+    }
+  }
+
+  localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+}
+
+
+//Atualiza infos do usuarioAtual no armazenamento
+function AtualizaUsuarioAtual(atual) {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  usuarioAtual = atual
+  localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
+
+}
+
+
+// Salva a nova senha no Objeto usuarioAtual e atualiza o JSON
+function AtualizaSenha(usuarioAtual) {
+
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"))
+
+  if (InputSenhaVazio() || !SaoIguais(senhaAtualEditar.value, usuarioAtual.senha) || !SaoIguais(senhaNovaEditar.value, confirmacaoSenhaEditar.value)) { return }
+  usuarioAtual.senha = senhaNovaEditar.value
+
+  AtualizaUsuarioAtual(usuarioAtual)
+  AtualizaUsuarios(usuarioAtual)
+
+  window.location.href="editarPerfil.html"
+  return alert("Senha atualizada com sucesso")
+
+}
+
+
+// Verificação se o usuário preencheu todos os inputs ao apertar "Salvar", retorna true se estiver VAZIO
+function InputSenhaVazio() {
+
+  if (senhaAtualEditar.value == "" || senhaNovaEditar.value == "" || confirmacaoSenhaEditar.value == "") {
+    alert("Você deixou algum campo vazio!")
+    return true
+  } 
+  return false
+}
+
+
+// Verifica se duas strings são iguais
+function SaoIguais(senhaInput, senhaReal){
+
+  if (senhaInput != senhaReal){      
+    return false
+  }
+  return true
 }
 
 
@@ -277,63 +320,7 @@ function DeletaConta() {
 }
 
 
-//Atualiza lista de usuarios no Armazenamento Local
-function AtualizaUsuarios(user) {
-  usuarios = JSON.parse(localStorage.getItem("usuarios"));
-
-  for(i = 0; i < usuarios.length; i++) {
-    if (usuarios[i].email == user.email) {
-      usuarios[i] = user
-    }
-  }
-
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
-
-}
-
-//Atualiza infos do usuarioAtual no armazenamento
-function AtualizaUsuarioAtual(atual) {
-  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  usuarioAtual = atual
-  localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
-}
-
-// Salva a nova senha no Objeto usuarioAtual e atualiza o JSON
-function AtualizaSenha(usuarioAtual) {
-
-  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"))
-
-  if (InputSenhaVazio() || !SaoIguais(senhaAtualEditar.value, usuarioAtual.senha) || !SaoIguais(senhaNovaEditar.value, confirmacaoSenhaEditar.value)) { return }
-  usuarioAtual.senha = senhaNovaEditar.value
-
-  AtualizaUsuarioAtual(usuarioAtual)
-  AtualizaUsuarios(usuarioAtual)
-
-  window.location.href="editarPerfil.html"
-  return alert("Senha atualizada com sucesso")
-
-}
-
-// Verificação se o usuário preencheu todos os inputs ao apertar "Salvar", retorna true se estiver VAZIO
-function InputSenhaVazio() {
-
-  if (senhaAtualEditar.value == "" || senhaNovaEditar.value == "" || confirmacaoSenhaEditar.value == "") {
-    alert("Você deixou algum campo vazio!")
-    return true
-  } 
-  return false
-}
-
-// Verifica se duas strings são iguais
-function SaoIguais(senhaInput, senhaReal){
-
-  if (senhaInput != senhaReal){      
-    return false
-  }
-  return true
-}
-
-
+//Mostra a Listagem dos bebedouros cadastrados automaticamente
 function CriaListaBebedouros() {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -366,6 +353,8 @@ function CriaListaBebedouros() {
 
 }
 
+
+//Armazena o Novo Dispositivo e Atualiza usuario e usuarioAtual
 function CadastraDispositivo() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -387,6 +376,24 @@ function CadastraDispositivo() {
 
 }
 
+
+//Verifica se Já existe bebedouro com o código digitado e retorna true se sim
+function BebedouroJaExiste(user) {
+
+  for (i = 0; i < user.dispositivos.length; i++) {
+    if (user.dispositivos[i][1] == numeroBebedouroInput.value) {
+      alert("Este código já foi cadastrado!")
+      document.getElementById("numeroBebedouroInput").style.color = "red"
+      return true
+    }
+  }
+
+  return false
+
+}
+
+
+//Exclui dispositivo e atualiza usuario e usuarioAtual
 function ExcluirDispositivo(indice) {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -403,16 +410,27 @@ function ExcluirDispositivo(indice) {
 
 }
 
-function BebedouroJaExiste(user) {
 
-  for (i = 0; i < user.dispositivos.length; i++) {
-    if (user.dispositivos[i][1] == numeroBebedouroInput.value) {
-      alert("Este código já foi cadastrado!")
-      document.getElementById("numeroBebedouroInput").style.color = "red"
-      return true
-    }
+//Volta para index e zera usuarioAtual
+function Sair() {
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  petAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  ZeraUsuarioAtual(usuarioAtual)
+  petAtual = {}
+  AtualizaPetAtual(petAtual)
+  window.location.href = "index.html"
+}
+
+
+//Declara usuario atual {}
+function ZeraUsuarioAtual(user) {
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  if(user == null) {
+    usuarioAtual = {}
+    localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
+  } else {
+    usuarioAtual = {}
+    localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
   }
-
-  return false
 
 }
