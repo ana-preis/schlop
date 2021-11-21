@@ -104,7 +104,6 @@ function Perfil() {
 
   if (usuarioAtual.pets != null) {
     let listaNomes = CriaListaNomesPets(usuarioAtual)
-    console.log(listaNomes)
     petsPerfil.innerHTML = listaNomes
   }
 
@@ -123,7 +122,6 @@ function CriaListaNomesPets(user) {
 
   for (i = 0; i < listaPets.length; i++) {
     listaNomes.push(listaPets[i].nome)
-    console.log(listaNomes.join(" , "))
   }
   return listaNomes.join(" , ")
 }
@@ -373,8 +371,6 @@ function CadastraDispositivo() {
   
   usuarioAtual.dispositivos.push([nomeBebedouroInput.value, numeroBebedouroInput.value])
 
-  console.log(usuarioAtual.dispositivos)
-
   AtualizaUsuarioAtual(usuarioAtual)
   AtualizaUsuarios(usuarioAtual)
 
@@ -390,8 +386,6 @@ function ExcluirDispositivo(indice) {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
   usuarioAtual.dispositivos.splice(indice, 1)
-
-  console.log(usuarioAtual.dispositivos)
 
   alert("Bebedouro excluido com sucesso!")
 

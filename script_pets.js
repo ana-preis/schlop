@@ -334,4 +334,70 @@ function CadastraTag() {
 
   alert("Cadastro da Tag realizado com sucesso!")
 
+  window.location.href = "cadastroTag.html"
+
+}
+
+function CriaListaTags() {
+
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+
+  let tag = petAtual.tag
+
+  if (tag == null) { 
+    document.getElementById("lista").innerHTML = "Ainda não há tags cadastradas para este pet!"
+    return 
+  }
+
+  let linhaTag = document.createElement("div")
+  let tagLabel = document.createElement("label")
+  let excluirtag = document.createElement("button")
+
+  tagLabel.textContent = tag
+  excluirtag.textContent = "Excluir"
+
+  document.getElementById("lista").appendChild(linhaTag)
+
+  linhaTag.appendChild(tagLabel)
+  linhaTag.appendChild(excluirtag)
+
+  excluirtag.addEventListener("click", e => {
+    ExcluirTag()
+  })
+  
+  excluirtag.classList.add("btn-excluir-disp")
+
+}
+
+function ExcluirTag() {
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  petAtual = JSON.parse(localStorage.getItem("petAtual"));
+  let listaPets = usuarioAtual.pets
+  let indicePetAtual
+
+  if(confirm("Tem certeza que deseja excluir a tag desse Pet?")) {
+
+    for(i = 0; i < listaPets.length; i++) {
+      if(listaPets[i].nome == petAtual.nome){
+        indicePetAtual = i
+        petAtual.tag = null
+        break
+      }
+    }
+
+    listaPets[indicePetAtual] = petAtual
+
+    AtualizaPetAtual(petAtual)
+    AtualizaUsuarioAtual(usuarioAtual)
+    AtualizaUsuarios(usuarioAtual)
+
+    alert("Tag excluida com sucesso!")
+
+    window.location.href = "cadastroTag.html"
+
+  }
+  
+
 }

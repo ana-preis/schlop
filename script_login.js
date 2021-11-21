@@ -150,7 +150,6 @@ function Login(){
       AtualizaUsuarioAtual(usuarioAtual)
   }
 
-  console.log(usuarioAtual)
   if(!SaoIguais(senhaLogin.value, usuarioAtual.senha)){
     document.getElementById("senhaLogin").style.color = "red"
     alert("Senha incorreta!")
@@ -185,7 +184,6 @@ function EmailLoginExiste() {
 //Verifica se duas strings são iguais
 function SaoIguais(senhaInput, senhaReal){
 
-  console.log(senhaInput, senhaReal)
     if (senhaInput != senhaReal){      
       return false
     }
@@ -222,7 +220,6 @@ function ValidaSenha() {
   var minNumberofChars = 6
   var maxNumberofChars = 16
   var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
-  console.log(senhaCadastro.value.length)
 
   if(senhaCadastro.value.length < minNumberofChars || senhaCadastro.value.length > maxNumberofChars){
     document.getElementById("senhaCadastro").style.color = "red"
