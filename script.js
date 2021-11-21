@@ -338,11 +338,12 @@ function CriaListaBebedouros() {
 
   for (i = 0; i < dispositivos.length; i++) {
 
+    let indiceDispositivo = i
     let linhaDispositivo = document.createElement("div")
     let dispositivo = document.createElement("label")
     let excluirDispositivo = document.createElement("button")
 
-    dispositivo.textContent = dispositivos[i]      //Considerando que dispositivos é array
+    dispositivo.textContent = dispositivos[i].join(" - ")      
     excluirDispositivo.textContent = "Excluir"
 
     document.getElementById("bebedouros").appendChild(linhaDispositivo)
@@ -350,9 +351,51 @@ function CriaListaBebedouros() {
     linhaDispositivo.appendChild(dispositivo)
     linhaDispositivo.appendChild(excluirDispositivo)
 
-    linhaDispositivo.classList.add("")
+    excluirDispositivo.addEventListener("click", e => {
+      ExcluirDispositivo(indiceDispositivo)
+    })
+/*     linhaDispositivo.classList.add("")
     excluirDispositivo.class.add("")
-
+ */
   }
+
+}
+
+function CadastraDispositivo() {
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+
+  let numeroBebedouroInput = document.getElementById("numeroBebedouroInput")
+  let nomeBebedouroInput = document.getElementById("nomeBebedouroInput")
+  
+  usuarioAtual.dispositivos.push([nomeBebedouroInput.value, numeroBebedouroInput.value])
+
+  console.log(usuarioAtual.dispositivos)
+
+  AtualizaUsuarioAtual(usuarioAtual)
+  AtualizaUsuarios(usuarioAtual)
+
+  alert("Cadastro do novo bebedouro realizado com sucesso!")
+
+  window.location.href = "cadastroDispositivo.html"
+
+}
+
+function ExcluirDispositivo(indice) {
+
+  usuarios = JSON.parse(localStorage.getItem("usuarios"))
+  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+
+  usuarioAtual.dispositivos.splice(indice, 1)
+
+  console.log(usuarioAtual.dispositivos)
+
+  alert("Bebedouro excluido com sucesso!")
+
+  window.location.href = "cadastroDispositivo.html"
+
+  AtualizaUsuarioAtual(usuarioAtual)
+  AtualizaUsuarios(usuarioAtual)
 
 }
