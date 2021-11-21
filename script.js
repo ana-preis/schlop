@@ -354,9 +354,9 @@ function CriaListaBebedouros() {
     excluirDispositivo.addEventListener("click", e => {
       ExcluirDispositivo(indiceDispositivo)
     })
-/*     linhaDispositivo.classList.add("")
-    excluirDispositivo.class.add("")
- */
+    
+    excluirDispositivo.classList.add("btn-excluir-disp")
+
   }
 
 }
@@ -368,6 +368,8 @@ function CadastraDispositivo() {
 
   let numeroBebedouroInput = document.getElementById("numeroBebedouroInput")
   let nomeBebedouroInput = document.getElementById("nomeBebedouroInput")
+
+  if (BebedouroJaExiste(usuarioAtual)) { return } 
   
   usuarioAtual.dispositivos.push([nomeBebedouroInput.value, numeroBebedouroInput.value])
 
@@ -397,5 +399,19 @@ function ExcluirDispositivo(indice) {
 
   AtualizaUsuarioAtual(usuarioAtual)
   AtualizaUsuarios(usuarioAtual)
+
+}
+
+function BebedouroJaExiste(user) {
+
+  for (i = 0; i < user.dispositivos.length; i++) {
+    if (user.dispositivos[i][1] == numeroBebedouroInput.value) {
+      alert("Este código já foi cadastrado!")
+      document.getElementById("numeroBebedouroInput").style.color = "red"
+      return true
+    }
+  }
+
+  return false
 
 }
