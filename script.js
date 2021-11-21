@@ -405,14 +405,18 @@ function ExcluirDispositivo(indice) {
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
 
-  usuarioAtual.dispositivos.splice(indice, 1)
+  if(confirm("Tem certeza que deseja excluir este bebedouro?")) {
 
-  alert("Bebedouro excluido com sucesso!")
+    usuarioAtual.dispositivos.splice(indice, 1)
 
-  window.location.href = "cadastroDispositivo.html"
+    alert("Bebedouro excluido com sucesso!")
 
-  AtualizaUsuarioAtual(usuarioAtual)
-  AtualizaUsuarios(usuarioAtual)
+    window.location.href = "cadastroDispositivo.html"
+
+    AtualizaUsuarioAtual(usuarioAtual)
+    AtualizaUsuarios(usuarioAtual)
+
+  }
 
 }
 
@@ -421,10 +425,15 @@ function ExcluirDispositivo(indice) {
 function Sair() {
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
   petAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  ZeraUsuarioAtual(usuarioAtual)
-  petAtual = {}
-  AtualizaPetAtual(petAtual)
-  window.location.href = "index.html"
+
+  if(confirm("Tem certeza que deseja sair da sua conta?")) {
+
+    ZeraUsuarioAtual(usuarioAtual)
+    petAtual = {}
+    AtualizaPetAtual(petAtual)
+    window.location.href = "index.html"
+  }
+
 }
 
 

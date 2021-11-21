@@ -410,7 +410,7 @@ function ExcluirTag() {
   let listaPets = usuarioAtual.pets
   let indicePetAtual
 
-  if(confirm("Tem certeza que deseja excluir a tag desse Pet?")) {
+  if(confirm("Tem certeza que deseja excluir a tag desse pet?")) {
 
     for(i = 0; i < listaPets.length; i++) {
       if(listaPets[i].nome == petAtual.nome){
