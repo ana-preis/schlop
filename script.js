@@ -26,6 +26,7 @@ function MostrarNomeUsuario() {
 
 }
 
+
 //Cria o card se houver pet cadastrado naquela conta
 function CriaCardPets() {
 
@@ -73,9 +74,8 @@ function CriaCardPets() {
 
 }
 
-//Armazena informações do pet clicado na página pets      //tem como direcionar do outro script??
 
-
+//Armazena informações do pet clicado na página pets
 function CriaPetAtual(id) {
 
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
@@ -101,6 +101,7 @@ function Perfil() {
 
   usuarios = JSON.parse(localStorage.getItem("usuarios"))
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
+  let listaNomeDispositivos = []
 
   if (usuarioAtual.pets != null) {
     let listaNomes = CriaListaNomesPets(usuarioAtual)
@@ -110,9 +111,15 @@ function Perfil() {
   nomePerfil.innerHTML = usuarioAtual.nome
   emailPerfil.innerHTML = usuarioAtual.email
   dataNascimentoPerfil.innerHTML = usuarioAtual.dataNascimento.split("-").reverse().join(" / ")
-  //dispositivoPerfil.innerHTML = usuarioAtual.dispositivos.join(" , ")
+
+  for(i = 0; i < usuarioAtual.dispositivos.length; i++) {
+    listaNomeDispositivos.push(usuarioAtual.dispositivos[i][0])
+  }
+
+  dispositivoPerfil.innerHTML = listaNomeDispositivos.join(" , ")
 
 }
+
 
 //Cria a lista de nomes que aparece no perfil
 function CriaListaNomesPets(user) {
