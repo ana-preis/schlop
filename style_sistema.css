@@ -26,7 +26,6 @@ input {
   font-family: 'Montserrat', sans-serif;  
 }
 
-
 .header {
   height: 20%;
   background-color: #fff;
@@ -36,6 +35,14 @@ input {
   position: relative;
   width: 25%;
   min-width: 300px;
+}
+
+.icone-perfil {
+  color: #7004cf;
+  width: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .icone{
@@ -52,6 +59,7 @@ input {
 }
 
 .btn-usuario {
+  display: flex;
   border: none;
   background: none;
   margin: 0;
