@@ -262,16 +262,38 @@ function AtualizaUsuarioAtual(atual) {
 
 // Salva a nova senha no Objeto usuarioAtual e atualiza o JSON
 function AtualizaSenha(usuarioAtual) {
-
+  
   usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"))
+  
+  if (InputSenhaVazio()) { return }
 
-  if (InputSenhaVazio() || !SaoIguais(senhaAtualEditar.value, usuarioAtual.senha) || !SaoIguais(senhaNovaEditar.value, confirmacaoSenhaEditar.value)) { return }
+  if(!SaoIguais(senhaAtualEditar.value, usuarioAtual.senha)) { 
+    document.getElementById("senhaAtualEditar").style.color = "red"
+    document.getElementById("senhaNovaEditar").style.color = "red"
+    alert("A senha atual está incorreta!")
+    return
+  }
+  
+  if(!SaoIguais(senhaNovaEditar.value, confirmacaoSenhaEditar.value)) { 
+    document.getElementById("confirmacaoSenhaEditar").style.color = "red"
+    document.getElementById("senhaNovaEditar").style.color = "red"
+    alert("A senha nova está diferente da senha de confirmação!")
+    return  
+  }
+
+  if(!ValidaSenha()) { return }
+  
   usuarioAtual.senha = senhaNovaEditar.value
 
   AtualizaUsuarioAtual(usuarioAtual)
   AtualizaUsuarios(usuarioAtual)
 
   window.location.href="editarPerfil.html"
+  document.getElementById("senhaAtualEditar").style.color = "red"
+  document.getElementById("senhaNovaEditar").style.color = "red"
+  document.getElementById("confirmacaoSenhaEditar").style.color = "red"
+  mensagemSenha.textContent = ""
+
   return alert("Senha atualizada com sucesso")
 
 }
@@ -295,6 +317,36 @@ function SaoIguais(senhaInput, senhaReal){
     return false
   }
   return true
+}
+
+//6 a 16 caracteres
+function ValidaSenha() {
+  var minNumberofChars = 6
+  var maxNumberofChars = 16
+  var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
+
+  if(senhaNovaEditar.value.length < minNumberofChars || senhaNovaEditar.value.length > maxNumberofChars){
+    document.getElementById("senhaNovaEditar").style.color = "red"
+    var mensagemSenha = document.getElementById("mensagemSenha")
+    mensagemSenha.textContent = "Senha deve ter no mínimo 6 e no máximo 16 caracteres"
+
+      return false
+  }
+  if(!regularExpression.test(senhaNovaEditar.value)) {
+    document.getElementById("senhaNovaEditar").style.color = "red"
+    document.getElementById("mensagemSenha").innerHTML = "Senha deve ter no mínimo 6 e no máximo 16 caracteres"
+
+    return false
+  }
+
+  if (senhaNovaEditar.value == usuarioAtual.senha) {
+    alert("A nova senha está igual a senha antiga!")
+    return false
+  }
+
+  document.getElementById("mensagemSenha").innerHTML = ""
+  return true
+
 }
 
 
