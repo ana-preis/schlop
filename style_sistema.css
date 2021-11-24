@@ -264,8 +264,12 @@ button.btn-content:hover {
   width: 100%;
 }
 
+.table-header .col{
+  font-weight: bold;
+  background-color: #f6b3ff;
+}
+
 .col {
-  background-color: #fff;
   height: 50px;
   padding-top: 15px;
   float: left;
@@ -277,7 +281,7 @@ button.btn-content:hover {
 
 .col1:hover {
   cursor: pointer;
-  background-color: #c787f8;
+  background-color: #b1f7e6;
 }
 
 .col2 {
@@ -343,7 +347,7 @@ button.excluir:hover {
 
 .card-relatorio {
   width: 100%;
-  background-color: #ccc;
+  background-color: #f6b3ff;
   margin: 1% 2%;
   padding: 2%;
   text-align: center;
