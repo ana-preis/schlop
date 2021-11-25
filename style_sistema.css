@@ -138,7 +138,7 @@ input {
 }
 
 .container label{
-  margin: 20px auto;
+  margin: 20px auto 20px 10px;
   display: block;
   text-align: center;
 }

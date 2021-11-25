@@ -281,7 +281,7 @@ function AtualizaSenha(usuarioAtual) {
     return  
   }
 
-  if(!ValidaSenha()) { return }
+  if(!ValidaSenhaEditar()) { return }
   
   usuarioAtual.senha = senhaNovaEditar.value
 
@@ -320,7 +320,7 @@ function SaoIguais(senhaInput, senhaReal){
 }
 
 //6 a 16 caracteres
-function ValidaSenha() {
+function ValidaSenhaEditar() {
   var minNumberofChars = 6
   var maxNumberofChars = 16
   var regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
@@ -421,16 +421,33 @@ function CadastraDispositivo() {
   let numeroBebedouroInput = document.getElementById("numeroBebedouroInput")
   let nomeBebedouroInput = document.getElementById("nomeBebedouroInput")
 
-  if (BebedouroJaExiste(usuarioAtual)) { return } 
+  if (usuarioAtual.dispositivos == undefined) {
+
+    usuarioAtual.dispositivos = []
+
+    usuarioAtual.dispositivos.push([nomeBebedouroInput.value, numeroBebedouroInput.value])
+
+    AtualizaUsuarioAtual(usuarioAtual)
+    AtualizaUsuarios(usuarioAtual)
+
+    alert("Cadastro do novo bebedouro realizado com sucesso!")
+
+    window.location.href = "cadastroDispositivo.html"
+
+  } else {
+
+    if (BebedouroJaExiste(usuarioAtual)) { return } 
   
-  usuarioAtual.dispositivos.push([nomeBebedouroInput.value, numeroBebedouroInput.value])
+    usuarioAtual.dispositivos.push([nomeBebedouroInput.value, numeroBebedouroInput.value])
 
-  AtualizaUsuarioAtual(usuarioAtual)
-  AtualizaUsuarios(usuarioAtual)
+    AtualizaUsuarioAtual(usuarioAtual)
+    AtualizaUsuarios(usuarioAtual)
 
-  alert("Cadastro do novo bebedouro realizado com sucesso!")
+    alert("Cadastro do novo bebedouro realizado com sucesso!")
 
-  window.location.href = "cadastroDispositivo.html"
+    window.location.href = "cadastroDispositivo.html"
+
+  }
 
 }
 
