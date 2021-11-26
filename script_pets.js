@@ -159,12 +159,10 @@ function CriaLinhaTabela() {
       editarIcon.classList.add("icone-editar")
       editarIcon.src = "imagens/editar.png"
 
-
-      idNome = i
       idTable = "table" + [i]
       
-      nomePet.setAttribute("id", idNome)
-      linhaPet.setAttribute("id", idTable)
+      nomePet.id = i
+      linhaPet.id = idTable
 
       nomePet.addEventListener("click", e => {
         CriaPetAtual(nomePet.id)

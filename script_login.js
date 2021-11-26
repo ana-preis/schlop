@@ -131,30 +131,40 @@ function VerificaEmailExiste() {
 }
 
 
-//Se clica 2x no ícone da senha, troca o type para text 
-function IconeSenha() {
+//Se clica no ícone da senha, troca o type para text 
+ function IconeSenha() {
 
-  const iconecadastro1 = document.querySelector('#iconecadastro1')
-  const senhaCadastro = document.querySelector('#senhaCadastro')
+  const iconecadastro1 = document.getElementById('iconecadastro1')
+  const senhaCadastro = document.getElementById('senhaCadastro')
 
-  iconecadastro1.addEventListener('click', function (e) {
-    const type = senhaCadastro.getAttribute('type') === 'password' ? 'text' : 'password'
-    senhaCadastro.setAttribute('type', type)
-    this.classList.toggle('icon-pass-on')
+  if (senhaCadastro.type == "password") {
+    senhaCadastro.setAttribute("type", "text")
+    iconecadastro1.classList.add("icon-pass-on")
 
-  })
+  } else if (senhaCadastro.type == "text") {
+    senhaCadastro.setAttribute("type", "password")
+    iconecadastro1.classList.remove("icon-pass-on")
 
-  const iconecadastro2 = document.querySelector('#iconecadastro2')
-  const senhaConfirmaCadastro = document.querySelector('#senhaConfirmaCadastro')
+  }
 
-  iconecadastro2.addEventListener('click', function (e) {
-    const type = senhaConfirmaCadastro.getAttribute('type') === 'password' ? 'text' : 'password'
-    senhaConfirmaCadastro.setAttribute('type', type)
-    this.classList.toggle('icon-pass-on')
+ }
 
-  })
+ function IconeSenhaConfirmar() {
 
-}
+  const iconecadastro2 = document.getElementById('iconecadastro2')
+  const senhaConfirmaCadastro = document.getElementById('senhaConfirmaCadastro')
+
+  if (senhaConfirmaCadastro.type == "password") {
+    senhaConfirmaCadastro.setAttribute("type", "text")
+    iconecadastro2.classList.add("icon-pass-on")
+
+  } else if (senhaConfirmaCadastro.type == "text") {
+    senhaConfirmaCadastro.setAttribute("type", "password")
+    iconecadastro2.classList.remove("icon-pass-on")
+
+  }
+  
+ }
 
 
 //6 a 16 caracteres
