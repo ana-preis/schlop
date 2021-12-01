@@ -310,31 +310,6 @@ function MostraInfosRelatorio() {
 
 }
 
-//Inclui classe absoluto se tiver um ou mais pets cadastrado na pg pets
-function BgAbsoluto() {
-  
-  usuarioAtual = JSON.parse(localStorage.getItem("usuarioAtual"));
-  let bgContainer = document.getElementById("bg-container")
-
-  if (usuarioAtual.pets == undefined) {
-    bgContainer.classList.add("absoluto")
-  }
-  
-  return
-}
-
-function BgAbsolutoTag() {
-
-  petAtual = JSON.parse(localStorage.getItem("petAtual"));
-  let bgContainer = document.getElementById("bg-container")
-
-  if(petAtual.tag == undefined) {
-    bgContainer.classList.add("absoluto")
-  }
-  return
-
- }
-
 //Cadastro da Tag RFID e atualização petAtual, usuarioAtual e usuarios
 function CadastraTag() {
 

@@ -7,69 +7,68 @@
     <title>Schlop - Perfil</title>
     <link rel="stylesheet" href="style_sistema.css">
     <link rel="icon" href="imagens/coleira.jpg" type="image/icon type">
-
   </head>
-  <body>
 
-    <div class="bg-container">
-      <div class="header">
-        <a onclick="location.href='poslogin.html'">
-          <img class="logo" src="imagens/logo.png">
-        </a>
-        <button class="sair verde" onclick="Sair()">Sair</button>
-        <div class="usuario">
-          <button class="btn-usuario" onclick="location.href='poslogin.html'">
-            <img src="imagens/perfil2.png" class="icone-perfil">
-            <h2 id="usuarioTopo"></h2>
-          </button>
-        </div>
-      </div>
+  <body class="bg-container">
 
-      <div class="nav">
-        <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
-        <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
-      </div>
-
-      <div class="container">
-
-        <h1>Perfil</h1>
-
-        <div class="content">
-
-          <div class="form-content">
-            <label>Nome: </label>
-            <label id="nomePerfil"></label><br>
-      
-            <label>Email: </label>
-            <label id="emailPerfil"></label><br>
-      
-            <label>Data Nascimento: </label>
-            <label id="dataNascimentoPerfil"></label><br>
-      
-            <label>Dispositivos conectados: </label>
-            <label id="dispositivoPerfil"></label><br>
-      
-            <label>Pets: </label>
-            <label id="petsPerfil"></label><br>
-          </div>
-
-          <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button>
-        </div>
-
-        <div class="btn-last">
-          <button onclick="history.go(-1);">
-            <img src="imagens/seta2.png" class="icone">
-            Voltar
-          </button>
-          <button class="btn-editar" onclick="location.href = 'editarPerfil.html'">
-            <img src="imagens/editar.png" class="icone">
-            Editar</button>
-        </div>
-
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/logo.png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+      <div class="usuario">
+        <button class="btn-usuario" onclick="location.href='poslogin.html'">
+          <img src="imagens/perfil2.png" class="icone-perfil">
+          <h2 id="usuarioTopo"></h2>
+        </button>
       </div>
     </div>
 
+    <div class="nav">
+      <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+    </div>
+
+    <div class="container">
+
+      <h1>Perfil</h1>
+
+      <div class="content">
+
+        <div class="form-content">
+          <label>Nome: </label>
+          <label id="nomePerfil"></label><br>
+    
+          <label>Email: </label>
+          <label id="emailPerfil"></label><br>
+    
+          <label>Data Nascimento: </label>
+          <label id="dataNascimentoPerfil"></label><br>
+    
+          <label>Dispositivos conectados: </label>
+          <label id="dispositivoPerfil"></label><br>
+    
+          <label>Pets: </label>
+          <label id="petsPerfil"></label><br>
+        </div>
+
+        <button class="btn-content" onclick="window.location.href='pets.html'">Editar Pets</button>
+      </div>
+
+      <div class="btn-last">
+        <button onclick="history.go(-1);">
+          <img src="imagens/seta2.png" class="icone">
+          Voltar
+        </button>
+        <button class="btn-editar" onclick="location.href = 'editarPerfil.html'">
+          <img src="imagens/editar.png" class="icone">
+          Editar</button>
+      </div>
+
+    </div>
+    
   </body>
+
   <script src="script.js"></script>
   <script src="script_login.js"></script>
   <script src="script_pets.js"></script>
@@ -78,5 +77,4 @@
     MostrarUsuarioHeader()
   </script>
 
-
- </html>
+</html>

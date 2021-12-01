@@ -7,63 +7,58 @@
     <title>Schlop - Cadastro Bebedouro</title>
     <link rel="stylesheet" href="style_sistema.css">
     <link rel="icon" href="imagens/coleira.jpg" type="image/icon type">
-
   </head>
-  <body>
+  
+  <body class="bg-container">
 
-    <div class="bg-container">
-
-      <div class="header">
-        <a onclick="location.href='poslogin.html'">
-          <img class="logo" src="imagens/logo.png">
-        </a>
-        <button class="sair verde" onclick="Sair()">Sair</button>
-        <div class="usuario">
-          <button class="btn-usuario" onclick="location.href='poslogin.html'">
-            <img src="imagens/perfil2.png" class="icone-perfil">
-            <h2 id="usuarioTopo"></h2>
-          </button>
-        </div>
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/logo.png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+      <div class="usuario">
+        <button class="btn-usuario" onclick="location.href='poslogin.html'">
+          <img src="imagens/perfil2.png" class="icone-perfil">
+          <h2 id="usuarioTopo"></h2>
+        </button>
       </div>
+    </div>
 
-      <div class="nav">
-        <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
-        <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
-      </div>
+    <div class="nav">
+      <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+    </div>
 
-      <div class="container">
+    <div class="container">
 
-        <h1>Cadastro de um novo Bebedouro</h1>
-        <h1 id="nomePet"></h1>
+      <h1>Cadastro de um novo Bebedouro</h1>
+      <h1 id="nomePet"></h1>
 
-        <div class="content">
+      <div class="content">
 
-          <h3>Digite o código do produto:</h3><br>
-          <input id="numeroBebedouroInput"><br>
-          <h3>Nome do dispositivo:</h3><br>
-          <input placeholder="Ex: 'Bebedouro 1'" id="nomeBebedouroInput"><br>
-          
-          <div class="row" id="cardRow">
-            <div id="bebedouros" class="lista">
-              <h3>Lista de dispositivos cadastrados:</h3>
-              <dv></dv>
-            </div>
-          </div>
-          
-          <div class="btn-last">
-            <button onclick="CadastraDispositivo()" class="btn-editar">
-              <img src="imagens/salvar.png" class="icone">
-              Cadastrar Dispositivo</button>
-            <button onclick="history.go(-1);">
-              <img src="imagens/seta2.png" class="icone">
-              Voltar</button>
-          </div>
-        </div>
-
+        <h3>Digite o código do produto:</h3><br>
+        <input id="numeroBebedouroInput"><br>
+        <h3>Nome do dispositivo:</h3><br>
+        <input placeholder="Ex: 'Bebedouro 1'" id="nomeBebedouroInput"><br>
         
+        <div class="row" id="cardRow">
+          <div id="bebedouros" class="lista">
+            <h3>Lista de dispositivos cadastrados:</h3>
+            <dv></dv>
+          </div>
+        </div>
+        
+        <div class="btn-last">
+          <button onclick="CadastraDispositivo()" class="btn-editar">
+            <img src="imagens/salvar.png" class="icone">
+            Cadastrar Dispositivo</button>
+          <button onclick="history.go(-1);">
+            <img src="imagens/seta2.png" class="icone">
+            Voltar</button>
+        </div>
+      </div>       
 
-      </div>
-    </div> 
+    </div>
 
   </body>
 

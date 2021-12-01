@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,58 +8,55 @@
     <title>Schlop - Cadastro Tag</title>
     <link rel="stylesheet" href="style_sistema.css">
     <link rel="icon" href="imagens/coleira.jpg" type="image/icon type">
-
   </head>
-  <body>
 
-    <div id="bg-container" class="bg-container">
+  <body class="bg-container">
 
-      <div class="header">
-        <a onclick="location.href='poslogin.html'">
-          <img class="logo" src="imagens/logo.png">
-        </a>
-        <button class="sair verde" onclick="Sair()">Sair</button>
-        <div class="usuario">
-          <button class="btn-usuario" onclick="location.href='poslogin.html'">
-            <img src="imagens/perfil2.png" class="icone-perfil">
-            <h2 id="usuarioTopo"></h2>
-          </button>
-        </div>
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/logo.png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+      <div class="usuario">
+        <button class="btn-usuario" onclick="location.href='poslogin.html'">
+          <img src="imagens/perfil2.png" class="icone-perfil">
+          <h2 id="usuarioTopo"></h2>
+        </button>
       </div>
+    </div>
 
-      <div class="nav">
-        <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
-        <button class="btn-nav btn-atual" onclick="location.href='pets.html'">Pets</button>
-      </div>
+    <div class="nav">
+      <button class="btn-nav" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav btn-atual" onclick="location.href='pets.html'">Pets</button>
+    </div>
 
-      <div class="container">
+    <div class="container">
 
-        <h1>Cadastro do Pet</h1>
-        <h1 id="nomePet"></h1>
+      <h1>Cadastro do Pet</h1>
+      <h1 id="nomePet"></h1>
 
-        <div class="content">
+      <div class="content">
 
-          <h3>Aproxime a tag da coleira do pet no sensor do bebedouro:</h3><br>
-          <input id="rfid"><br>
+        <h3>Aproxime a tag da coleira do pet no sensor do bebedouro:</h3><br>
+        <input id="rfid"><br>
 
-          <div class="lista" id="lista">
-            <h3>Tags Cadastradas:</h3>
-            <div></div>
-          </div>
-          
+        <div class="lista" id="lista">
+          <h3>Tags Cadastradas:</h3>
+          <div></div>
         </div>
         
-        <div class="btn-last">
-          <button onclick="CadastraTag()" class="btn-editar">
-            <img src="imagens/salvar.png" class="icone">
-            Cadastrar Tag</button>
-          <button onclick="history.go(-1);">
-            <img src="imagens/seta2.png" class="icone">
-            Voltar</button>
-        </div>
-
       </div>
-    </div> 
+      
+      <div class="btn-last">
+        <button onclick="CadastraTag()" class="btn-editar">
+          <img src="imagens/salvar.png" class="icone">
+          Cadastrar Tag</button>
+        <button onclick="history.go(-1);">
+          <img src="imagens/seta2.png" class="icone">
+          Voltar</button>
+      </div>
+
+    </div>
 
   </body>
 
@@ -69,7 +67,6 @@
     MostraNomePet()
     CriaListaTags()
     MostrarUsuarioHeader()
-    BgAbsolutoTag()
   </script>
 
 </html>

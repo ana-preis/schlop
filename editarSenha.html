@@ -7,63 +7,57 @@
     <title>Schlop - Editar Senha</title>
     <link rel="stylesheet" href="style_sistema.css">
     <link rel="icon" href="imagens/coleira.jpg" type="image/icon type">
-
-
   </head>
 
-  <body>
+  <body class="bg-container">
 
-    <div class="bg-container absoluto">
-      <div class="header">
-        <a onclick="location.href='poslogin.html'">
-          <img class="logo" src="imagens/logo.png">
-        </a>
-        <button class="sair verde" onclick="Sair()">Sair</button>
-        <div class="usuario">
-          <button class="btn-usuario" onclick="location.href='poslogin.html'">
-            <img src="imagens/perfil2.png" class="icone-perfil">
-            <h2 id="usuarioTopo"></h2>
-          </button>
-        </div>
+    <div class="header">
+      <a onclick="location.href='poslogin.html'">
+        <img class="logo" src="imagens/logo.png">
+      </a>
+      <button class="sair verde" onclick="Sair()">Sair</button>
+      <div class="usuario">
+        <button class="btn-usuario" onclick="location.href='poslogin.html'">
+          <img src="imagens/perfil2.png" class="icone-perfil">
+          <h2 id="usuarioTopo"></h2>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
+      <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+    </div>
+
+    <div class="container">
+
+      <h1>Editar Senha</h1>
+
+      <div class="content">
+
+        <label>Senha Atual: </label>
+        <input class="senha-input" id="senhaAtualEditar" type="password"></input><br>
+
+        <label>Nova Senha: </label>
+        <input class="senha-input" id="senhaNovaEditar" type="password"></input>
+        <label id="mensagemSenha"></label>
+        <br>
+
+        <label>Repita a Nova Senha: </label>
+        <input class="senha-input" id="confirmacaoSenhaEditar" type="password"></input><br>
+
       </div>
 
-      <div class="nav">
-        <button class="btn-nav btn-atual" onclick="location.href='perfil.html'">Perfil</button>
-        <button class="btn-nav" onclick="location.href='pets.html'">Pets</button>
+      <div class="btn-last">
+        <button onclick="history.go(-1);">
+          <img src="imagens/seta2.png" class="icone">
+          Voltar
+        </button>
+        <button class="btn-editar" onclick="AtualizaSenha()">
+          <img src="imagens/salvar.png" class="icone">
+          Salvar</button><br>
       </div>
 
-      <div class="container">
-
-        <h1>Editar Senha</h1>
-
-        <div class="content">
-
-          <label>Senha Atual: </label>
-          <input class="senha-input" id="senhaAtualEditar" type="password"></input><br>
-
-          <label>Nova Senha: </label>
-          <input class="senha-input" id="senhaNovaEditar" type="password"></input>
-          <label id="mensagemSenha"></label>
-          <br>
-
-          <label>Repita a Nova Senha: </label>
-          <input class="senha-input" id="confirmacaoSenhaEditar" type="password"></input><br>
-
-        </div>
-
-        <div class="btn-last">
-          <button onclick="history.go(-1);">
-            <img src="imagens/seta2.png" class="icone">
-            Voltar
-          </button>
-          <button class="btn-editar" onclick="AtualizaSenha()">
-            <img src="imagens/salvar.png" class="icone">
-            Salvar</button><br>
-        </div>
-
-
-
-      </div>
     </div>
 
   </body>
