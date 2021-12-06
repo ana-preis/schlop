@@ -53,7 +53,7 @@
           <h3>Gráfico - Quantidade de idas ao bebedouro:</h3><div class="chart" id="chartQtd"></div>
         </div>
         <div class="card-relatorio">
-          <h3>Gráfico - ml bebidos</h3><div class="chart" id="chartMl"></div>
+          <h3>Gráfico - Mls bebidos</h3><div class="chart" id="chartMl"></div>
         </div>
       </div>
 
@@ -90,6 +90,7 @@
       const options = {
         height: 300,
         width: 900,
+        colors: ['#9D3BF2']
       }
 
       const chart = new google.visualization.ColumnChart(container)
@@ -117,7 +118,8 @@
 
       const options = {
         height: 300,
-        width: 900
+        width: 900,
+        colors: ['#9D3BF2'],
       }
 
       const chart = new google.visualization.ColumnChart(container)

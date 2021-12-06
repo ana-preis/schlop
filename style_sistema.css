@@ -353,6 +353,11 @@ button.excluir:hover {
   text-align: center;
 }
 
+.card-relatorio div.chart {
+  width: 900px;
+  margin: 0 auto;
+}
+
 .width-50 {
   width: 42%;
   float: left;
@@ -380,6 +385,3 @@ button.excluir:hover {
   text-decoration: underline;
 }
 
-.chart {
-  margin: 0 auto;
-}
