@@ -44,16 +44,16 @@
           <h3>Condição médica:</h3><h3 id="condicaoRelatorio"></h3>
         </div>
         <div class="card-relatorio width-50">
-          <h3>Quantidade de idas ao bebedouro:</h3><h3 id="quantidadeIdas">4</h3>
+          <h3>Quantidade de idas ao bebedouro:</h3><h3 id="quantidadeIdas">3</h3>
         </div>
         <div class="card-relatorio width-50">
-          <h3>Mls de água bebidos:</h3><h3 id="litros">300ml</h3>
+          <h3>Mls de água bebidos hoje:</h3><h3 id="litros">300ml</h3>
         </div>
         <div class="card-relatorio">
-          <h3>Gráfico - Quantidade de idas ao bebedouro:</h3><h3 id=""></h3>
+          <h3>Gráfico - Quantidade de idas ao bebedouro:</h3><div class="chart" id="chartQtd"></div>
         </div>
         <div class="card-relatorio">
-          <h3>Gráfico -  Litros bebidos</h3><h3 id=""></h3>
+          <h3>Gráfico - ml bebidos</h3><div class="chart" id="chartMl"></div>
         </div>
       </div>
 
@@ -66,6 +66,64 @@
     </div>   
       
   </body>
+
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <script>
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      const container = document.querySelector('#chartQtd')
+      const data = new google.visualization.arrayToDataTable([
+        [ 'Dia', 'Idas ao Bebedouro' ],
+        [ '03/12', 4 ],
+        [ '04/12', 5 ],
+        [ '05/12', 4 ],
+        [ '06/12', 3 ],
+        [ '07/12', 4 ],
+        [ '08/12', 2 ],
+        [ '09/12', 5 ],
+        [ '10/12', 3 ],
+      ])
+
+      const options = {
+        height: 300,
+        width: 900,
+      }
+
+      const chart = new google.visualization.ColumnChart(container)
+      chart.draw(data, options)
+    }
+  </script>
+
+  <script>
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      const container = document.querySelector('#chartMl')
+      const data = new google.visualization.arrayToDataTable([
+        [ 'Dia', 'ml' ],
+        [ '03/12', 280 ],
+        [ '04/12', 350 ],
+        [ '05/12', 290 ],
+        [ '06/12', 260 ],
+        [ '07/12', 300 ],
+        [ '08/12', 210 ],
+        [ '09/12', 270 ],
+        [ '10/12', 300 ],
+      ])
+
+      const options = {
+        height: 300,
+        width: 900
+      }
+
+      const chart = new google.visualization.ColumnChart(container)
+      chart.draw(data, options)
+    }
+  </script>
 
   <script src="script_login.js"></script>
   <script src="script.js"></script>

@@ -379,3 +379,7 @@ button.excluir:hover {
 .btn-excluir-disp:hover {
   text-decoration: underline;
 }
+
+.chart {
+  margin: 0 auto;
+}
